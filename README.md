@@ -2,5 +2,5 @@
 A group fullstack project for learning and showcasing skills. 
 
 # Credits
-Petri Tolonen
-Pinja Kerkkänen
+Suvi Lindholm (Sharkaw)
+Pinja Kerkkänen (4zarue)
