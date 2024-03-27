@@ -1,5 +1,7 @@
 # bujoapp
-A group fullstack project for learning and showcasing skills. 
+
+A group fullstack project for learning and showcasing skills.
 
 # Credits
-Petri Tolonen
+
+Suvi Lindholm (Sharkaw)
