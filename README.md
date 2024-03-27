@@ -8,6 +8,6 @@ The Bullet Journal application is a web browser application that functions as a 
 
 # Credits
 
-Suvi Lindholm (Sharkaw)
-Pasi Pakarinen
-Pinja Kerkkänen (4zarue)
+-   Suvi Lindholm (Sharkaw)
+-   Pasi Pakarinen
+-   Pinja Kerkkänen (4zarue)
