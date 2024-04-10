@@ -44,6 +44,8 @@ model Journal {
   bookshelfId             String
   Notes_collection        Notes_collection[]
   Sticky_notes_collection Sticky_notes_collection[]
+  to_do_lists_collection  to_do_lists_collection[]
+  calendar_collection     calendar_collection[]
 }
 
 model Notes_collection {
@@ -83,4 +85,44 @@ model Sticky_note_item {
   createdAt                 DateTime                @default(now())
   updateAt                  DateTime                @updatedAt
   sticky_notes_collectionId String
+}
+
+model to_do_lists_collection {
+  id              String            @id @default(uuid())
+  journal         Journal           @relation(fields: [journalId], references: [id])
+  title           String
+  createdAt       DateTime          @default(now())
+  updateAt        DateTime          @updatedAt
+  journalId       String
+  to_do_list_item to_do_list_item[]
+}
+
+model to_do_list_item {
+  id                       String                 @id @default(uuid())
+  to_do_list               to_do_lists_collection @relation(fields: [to_do_lists_collectionId], references: [id])
+  title                    String
+  content                  String?
+  createdAt                DateTime               @default(now())
+  updateAt                 DateTime               @updatedAt
+  to_do_lists_collectionId String
+}
+
+model calendar_collection {
+  id            String          @id @default(uuid())
+  journal       Journal         @relation(fields: [journalId], references: [id])
+  title         String
+  createdAt     DateTime        @default(now())
+  updateAt      DateTime        @updatedAt
+  journalId     String
+  calendar_item calendar_item[]
+}
+
+model calendar_item {
+  id                    String              @id @default(uuid())
+  calendar              calendar_collection @relation(fields: [calendar_collectionId], references: [id])
+  title                 String
+  content               String?
+  createdAt             DateTime            @default(now())
+  updateAt              DateTime            @updatedAt
+  calendar_collectionId String
 }
