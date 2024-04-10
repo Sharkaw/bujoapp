@@ -25,11 +25,63 @@ model User {
 }
 
 model Bookshelf {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
   description String?
-  owner       User     @relation(fields: [userId], references: [id])
-  createdAt   DateTime @default(now())
-  updateAt    DateTime @updatedAt
+  owner       User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updateAt    DateTime  @updatedAt
   userId      String
+  Journal     Journal[]
+}
+
+model Journal {
+  id                      String                    @id @default(uuid())
+  bookshelf               Bookshelf                 @relation(fields: [bookshelfId], references: [id])
+  title                   String
+  createdAt               DateTime                  @default(now())
+  updateAt                DateTime                  @updatedAt
+  bookshelfId             String
+  Notes_collection        Notes_collection[]
+  Sticky_notes_collection Sticky_notes_collection[]
+}
+
+model Notes_collection {
+  id         String       @id @default(uuid())
+  journal    Journal      @relation(fields: [journalId], references: [id])
+  title      String
+  createdAt  DateTime     @default(now())
+  updateAt   DateTime     @updatedAt
+  Notes_item Notes_item[]
+  journalId  String
+}
+
+model Notes_item {
+  id                 String           @id @default(uuid())
+  note_collection    Notes_collection @relation(fields: [notes_collectionId], references: [id])
+  title              String
+  content            String?
+  createdAt          DateTime         @default(now())
+  updateAt           DateTime         @updatedAt
+  notes_collectionId String
+}
+
+model Sticky_notes_collection {
+  id               String             @id @default(uuid())
+  journal          Journal            @relation(fields: [journalId], references: [id])
+  title            String
+  createdAt        DateTime           @default(now())
+  updateAt         DateTime           @updatedAt
+  journalId        String
+  Sticky_note_item Sticky_note_item[]
+}
+
+model Sticky_note_item {
+  id                        String                  @id @default(uuid())
+  sticky_notes_collection   Sticky_notes_collection @relation(fields: [sticky_notes_collectionId], references: [id])
+  title                     String
+  content                   String?
+  createdAt                 DateTime                @default(now())
+  updateAt                  DateTime                @updatedAt
+  sticky_notes_collectionId String
 }
