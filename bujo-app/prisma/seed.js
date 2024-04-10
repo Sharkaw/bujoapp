@@ -1,7 +1,6 @@
 // This is a seed file for Prisma
 
-// const { PrismaClient } = require("@prisma/client");
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
