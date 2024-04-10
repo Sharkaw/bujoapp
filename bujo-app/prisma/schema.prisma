@@ -17,7 +17,7 @@ model User {
   id        String      @id @default(uuid())
   username  String      @unique
   password  String
-  email     String
+  email     String      @unique
   picture   String?
   createdAt DateTime    @default(now())
   updateAt  DateTime    @updatedAt
@@ -79,7 +79,6 @@ model Sticky_notes_collection {
 model Sticky_note_item {
   id                        String                  @id @default(uuid())
   sticky_notes_collection   Sticky_notes_collection @relation(fields: [sticky_notes_collectionId], references: [id])
-  title                     String
   content                   String?
   createdAt                 DateTime                @default(now())
   updateAt                  DateTime                @updatedAt
