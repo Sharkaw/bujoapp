@@ -12,13 +12,12 @@ The Bullet Journal application is a web browser application that functions as a 
 
 ## Setting up the project
 
-1. Run in terminal `npm install`
+1. Run in terminal `npm install --save dev prisma`
 2. Create local PostgresSQL database.
-3. Place your database credentials to .env. You can use .env-example as a base `cp .env.example .env`
-4. Run in terminal `npx prisma init --datasource-provider postgresql`
+3. Place your database credentials to .env. You can use .env.example as a base `cp .env.example .env`
+4. Run in terminal `npx prisma generate`
 5. Run in terminal `npx prisma migrate dev`
-6. Run in terminal `npx prisma generate`
-7. Run in terminal `npm run build`
+6. Run in terminal `npm run build`
 
 ### Making changing in Prisma schema
 
