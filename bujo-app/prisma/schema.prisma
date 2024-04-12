@@ -17,7 +17,7 @@ model User {
   id        String      @id @default(uuid())
   username  String      @unique
   password  String
-  email     String
+  email     String      @unique
   picture   String?
   createdAt DateTime    @default(now())
   updateAt  DateTime    @updatedAt
@@ -32,7 +32,7 @@ model Bookshelf {
   createdAt   DateTime  @default(now())
   updateAt    DateTime  @updatedAt
   userId      String
-  Journal     Journal[]
+  journal     Journal[]
 }
 
 model Journal {
@@ -44,8 +44,8 @@ model Journal {
   bookshelfId             String
   Notes_collection        Notes_collection[]
   Sticky_notes_collection Sticky_notes_collection[]
-  to_do_lists_collection  to_do_lists_collection[]
-  calendar_collection     calendar_collection[]
+  To_do_lists_collection  To_do_lists_collection[]
+  Calendar_collection     Calendar_collection[]
 }
 
 model Notes_collection {
@@ -81,46 +81,45 @@ model Sticky_notes_collection {
 model Sticky_note_item {
   id                        String                  @id @default(uuid())
   sticky_notes_collection   Sticky_notes_collection @relation(fields: [sticky_notes_collectionId], references: [id])
-  title                     String
-  content                   String?
+  content                   String
   createdAt                 DateTime                @default(now())
   updateAt                  DateTime                @updatedAt
   sticky_notes_collectionId String
 }
 
-model to_do_lists_collection {
+model To_do_lists_collection {
   id              String            @id @default(uuid())
   journal         Journal           @relation(fields: [journalId], references: [id])
   title           String
   createdAt       DateTime          @default(now())
   updateAt        DateTime          @updatedAt
   journalId       String
-  to_do_list_item to_do_list_item[]
+  To_do_list_item To_do_list_item[]
 }
 
-model to_do_list_item {
+model To_do_list_item {
   id                       String                 @id @default(uuid())
-  to_do_list               to_do_lists_collection @relation(fields: [to_do_lists_collectionId], references: [id])
-  title                    String
-  content                  String?
+  to_do_list               To_do_lists_collection @relation(fields: [to_do_lists_collectionId], references: [id])
+  content                  String
+  status                   Boolean                @default(false)
   createdAt                DateTime               @default(now())
   updateAt                 DateTime               @updatedAt
   to_do_lists_collectionId String
 }
 
-model calendar_collection {
+model Calendar_collection {
   id            String          @id @default(uuid())
   journal       Journal         @relation(fields: [journalId], references: [id])
   title         String
   createdAt     DateTime        @default(now())
   updateAt      DateTime        @updatedAt
   journalId     String
-  calendar_item calendar_item[]
+  Calendar_item Calendar_item[]
 }
 
-model calendar_item {
+model Calendar_item {
   id                    String              @id @default(uuid())
-  calendar              calendar_collection @relation(fields: [calendar_collectionId], references: [id])
+  calendar              Calendar_collection @relation(fields: [calendar_collectionId], references: [id])
   title                 String
   content               String?
   createdAt             DateTime            @default(now())
