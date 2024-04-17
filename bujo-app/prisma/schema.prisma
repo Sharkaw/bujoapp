@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String      @id @default(uuid())
+  username  String      @unique
+  password  String
+  email     String      @unique
+  picture   String?
+  createdAt DateTime    @default(now())
+  updateAt  DateTime    @updatedAt
+  Bookshelf Bookshelf[]
+}
+
+model Bookshelf {
+  id          String    @id @default(uuid())
+  title       String
+  description String?
+  owner       User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updateAt    DateTime  @updatedAt
+  userId      String
+  journal     Journal[]
+}
+
+model Journal {
+  id                      String                    @id @default(uuid())
+  bookshelf               Bookshelf                 @relation(fields: [bookshelfId], references: [id])
+  title                   String
+  createdAt               DateTime                  @default(now())
+  updateAt                DateTime                  @updatedAt
+  bookshelfId             String
+  Notes_collection        Notes_collection[]
+  Sticky_notes_collection Sticky_notes_collection[]
+  To_do_lists_collection  To_do_lists_collection[]
+  Calendar_collection     Calendar_collection[]
+}
+
+model Notes_collection {
+  id         String       @id @default(uuid())
+  journal    Journal      @relation(fields: [journalId], references: [id])
+  title      String
+  createdAt  DateTime     @default(now())
+  updateAt   DateTime     @updatedAt
+  Notes_item Notes_item[]
+  journalId  String
+}
+
+model Notes_item {
+  id                 String           @id @default(uuid())
+  note_collection    Notes_collection @relation(fields: [notes_collectionId], references: [id])
+  title              String
+  content            String?
+  createdAt          DateTime         @default(now())
+  updateAt           DateTime         @updatedAt
+  notes_collectionId String
+}
+
+model Sticky_notes_collection {
+  id               String             @id @default(uuid())
+  journal          Journal            @relation(fields: [journalId], references: [id])
+  title            String
+  createdAt        DateTime           @default(now())
+  updateAt         DateTime           @updatedAt
+  journalId        String
+  Sticky_note_item Sticky_note_item[]
+}
+
+model Sticky_note_item {
+  id                        String                  @id @default(uuid())
+  sticky_notes_collection   Sticky_notes_collection @relation(fields: [sticky_notes_collectionId], references: [id])
+  content                   String
+  createdAt                 DateTime                @default(now())
+  updateAt                  DateTime                @updatedAt
+  sticky_notes_collectionId String
+}
+
+model To_do_lists_collection {
+  id              String            @id @default(uuid())
+  journal         Journal           @relation(fields: [journalId], references: [id])
+  title           String
+  createdAt       DateTime          @default(now())
+  updateAt        DateTime          @updatedAt
+  journalId       String
+  To_do_list_item To_do_list_item[]
+}
+
+model To_do_list_item {
+  id                       String                 @id @default(uuid())
+  to_do_list               To_do_lists_collection @relation(fields: [to_do_lists_collectionId], references: [id])
+  content                  String
+  status                   Boolean                @default(false)
+  createdAt                DateTime               @default(now())
+  updateAt                 DateTime               @updatedAt
+  to_do_lists_collectionId String
+}
+
+model Calendar_collection {
+  id            String          @id @default(uuid())
+  journal       Journal         @relation(fields: [journalId], references: [id])
+  title         String
+  createdAt     DateTime        @default(now())
+  updateAt      DateTime        @updatedAt
+  journalId     String
+  Calendar_item Calendar_item[]
+}
+
+model Calendar_item {
+  id                    String              @id @default(uuid())
+  calendar              Calendar_collection @relation(fields: [calendar_collectionId], references: [id])
+  title                 String
+  content               String?
+  createdAt             DateTime            @default(now())
+  updateAt              DateTime            @updatedAt
+  calendar_collectionId String
+}
