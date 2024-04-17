@@ -3,18 +3,24 @@ import { PrismaClient } from "@prisma/client";
 
 export default async function Sidebar() {
     const prisma = new PrismaClient();
-    const username = "Alice";
+    try {
+        const username = "Alice";
 
-    const journals = await prisma.user.findUnique({
-        where: { username: username },
-        include: {
-            Bookshelf: {
-                include: {
-                    journal: true,
+        const journals = await prisma.user.findUnique({
+            where: { username: username },
+            include: {
+                Bookshelf: {
+                    include: {
+                        journal: true,
+                    },
                 },
             },
-        },
-    });
-    console.log(journals.Bookshelf[0].journal);
-    return <SidebarMenu journals={journals.Bookshelf[0].journal} />;
+        });
+        console.log(journals.Bookshelf[0].journal);
+        return <SidebarMenu journals={journals.Bookshelf[0].journal} />;
+    } catch (error) {
+        console.error("Failed to fetch bookshelves:", error);
+    } finally {
+        await prisma.$disconnect();
+    }
 }
