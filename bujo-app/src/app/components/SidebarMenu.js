@@ -12,31 +12,33 @@ import {
 import { LuStickyNote } from "react-icons/lu";
 import { Sidebar } from "flowbite-react";
 
-const journals = [
-    { title: "2024", url: "#" },
-    { title: "2023", url: "#" },
-    { title: "2022", url: "#" },
-];
 const userLoggedIn = true;
+const itemStyle = " hover:bg-gray-400  focus:bg-gray-400 active:bg-gray-400";
 
-const SidebarMenu = () => {
+export default function SidebarMenu({ journals }) {
     if (userLoggedIn) {
         return (
-            <Sidebar className="text-gray-900">
-                <Sidebar.Items>
+            <Sidebar>
+                <Sidebar.Items className="bg-red-400 text-gray-800">
                     <Sidebar.ItemGroup>
                         <Sidebar.Collapse icon={FiUser} label="Profile">
-                            <Sidebar.Item href="#">Edit Profile</Sidebar.Item>
-                            <Sidebar.Item href="#">Friends</Sidebar.Item>
-                            <Sidebar.Item href="#">Share</Sidebar.Item>
+                            <Sidebar.Item href="#" className={itemStyle}>
+                                Edit Profile
+                            </Sidebar.Item>
+                            <Sidebar.Item href="#" className={itemStyle}>
+                                Friends
+                            </Sidebar.Item>
+                            <Sidebar.Item href="#" className={itemStyle}>
+                                Share
+                            </Sidebar.Item>
                         </Sidebar.Collapse>
                         <Sidebar.Collapse icon={FiBook} label="Bookshelf">
                             <Sidebar.Item href="#" icon={FiEdit2}>
                                 Create journal
                             </Sidebar.Item>
                             <hr />
-                            {journals.map((journal) => (
-                                <Sidebar.Item href={journal.url}>
+                            {journals.map((journal, index) => (
+                                <Sidebar.Item href="#" key={index}>
                                     {journal.title}
                                 </Sidebar.Item>
                             ))}
@@ -64,6 +66,4 @@ const SidebarMenu = () => {
             </Sidebar>
         );
     }
-};
-
-export default SidebarMenu;
+}
