@@ -1,21 +1,20 @@
-"use client";
 import SidebarMenu from "@/app/components/SidebarMenu";
+import { PrismaClient } from "@prisma/client";
 
-export async function getServerSideProps() {
+export default async function Sidebar() {
     const prisma = new PrismaClient();
-    const user = "Alice"; //getSession(context)
+    const username = "Alice";
 
-    const journals = await prisma.journal.findMany({
-        where: {
-            userName: user,
-        },
-        select: {
-            title: true,
+    const journals = await prisma.user.findUnique({
+        where: { username: username },
+        include: {
+            Bookshelf: {
+                include: {
+                    journal: true,
+                },
+            },
         },
     });
-    return { props: { journals } };
-}
-
-export default function Sidebar({ journals }) {
-    return <SidebarMenu journals={journals} />;
+    console.log(journals.Bookshelf[0].journal);
+    return <SidebarMenu journals={journals.Bookshelf[0].journal} />;
 }
