@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from './components/Header';
+// import Header from './components/Header';
 // import Footer from './components/Footer'
 
 const LayoutGrid = ({ children }) => {
   return (
     <div className="bg-white text-black min-h-screen">
       <div className="grid grid-cols-12 gap-4">
-        <Header />
+        {/* <Header /> */}
         <main>{children}</main>
         {/* <Footer /> */}
       </div>
