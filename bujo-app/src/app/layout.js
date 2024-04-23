@@ -4,13 +4,17 @@ import React from 'react';
 
 const LayoutGrid = ({ children }) => {
   return (
-    <div className="bg-white text-black min-h-screen">
-      <div className="grid grid-cols-12 gap-4">
-        {/* <Header /> */}
-        <main>{children}</main>
-        {/* <Footer /> */}
-      </div>
-    </div>
+    <html lang='en'>
+      <body>
+        <div className="bg-white text-black min-h-screen">
+          <div className="grid grid-cols-12 gap-4">
+            {/* <Header /> */}
+            <main>{children}</main>
+            {/* <Footer /> */}
+          </div>
+        </div>
+      </body>
+    </html>
   );
 };
 
