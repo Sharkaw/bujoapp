@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { BaseButton } from "./api/users/BaseButton";
+import { BaseButton } from "./api/users/common/BaseButton";
+import { LongButton } from "./api/users/common/LongButton";
 
 export default function Home() {
     return (
@@ -41,6 +42,14 @@ export default function Home() {
                 <div className="bg-white">
                     <BaseButton title="Button" variant="primary" />
                     <BaseButton title="Button" variant="success" />
+                    <BaseButton title="Button" variant="danger" />
+                    <BaseButton title="Button" variant="disabled" />
+                </div>
+                <div className="bg-white">
+                    <LongButton title="Button" variant="primary" />
+                    <LongButton title="Button" variant="success" />
+                    <LongButton title="Button" variant="danger" />
+                    <LongButton title="Button" variant="disabled" />
                 </div>
                 <a
                     href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
