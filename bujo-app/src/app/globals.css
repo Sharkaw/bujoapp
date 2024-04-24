@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import "flowbite";
 
 :root {
     --foreground-rgb: 0, 0, 0;
@@ -33,8 +33,4 @@ body {
     .text-balance {
         text-wrap: balance;
     }
-}
-
-.test {
-    @apply font-bold py-2 px-4 rounded;
 }

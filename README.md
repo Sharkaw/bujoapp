@@ -17,7 +17,7 @@ The Bullet Journal application is a web browser application that functions as a 
 3. Place your database credentials to .env. You can use .env.example as a base `cp .env.example .env`
 4. Run in terminal `npx prisma generate`
 5. Run in terminal `npx prisma migrate dev`
-6. Run in terminal `npm start`
+6. Run in terminal `npm run dev`
 
 ### Making changes in Prisma schema
 
