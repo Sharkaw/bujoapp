@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { BaseButton } from "./api/users/common/BaseButton";
-import { LongButton } from "./api/users/common/LongButton";
+import { BaseButton } from "./common/BaseButton";
+import { LongButton } from "./common/LongButton";
 
 export default function Home() {
     return (
