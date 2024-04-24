@@ -1,4 +1,4 @@
-import SidebarMenu from "@/app/components/SidebarMenu";
+import SidebarMenu from "@/app/components/layout/SidebarMenu";
 import { PrismaClient } from "@prisma/client";
 
 export default async function Sidebar() {
