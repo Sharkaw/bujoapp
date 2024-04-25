@@ -39,7 +39,7 @@ body {
 
 @layer base {
     h1 {
-        @apply text-5xl font-kalam;
+        @apply text-5xl font-kalam mb-5 p-2;
     }
     p {
         @apply font-inter;
