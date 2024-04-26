@@ -45,3 +45,6 @@ body {
         @apply font-inter;
     }
 }
+main {
+    height: calc(100vh - 112px);
+}
