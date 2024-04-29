@@ -14,7 +14,7 @@ const LayoutGrid = ({ children }) => {
                         <Sidebar />
                     </div>
                     <div className="col-span-6 bg-blue-400">
-                        <main class="flex justify-center">{children}</main>
+                        <main className="flex justify-center">{children}</main>
                     </div>
                     <div className="col-span-3 bg-green-700 flex justify-center">
                         Content 3
