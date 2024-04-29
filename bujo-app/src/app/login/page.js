@@ -1,6 +1,7 @@
 "use client";
 
 import LoginForm from "@/app/components/forms/LoginForm";
+import Link from "next/link";
 
 export default function Form() {
     return (
@@ -8,9 +9,12 @@ export default function Form() {
             <h1 className="mt-8">Log in</h1>
             <p className="p-1 m-1 inline-block align-baseline font-bold text-sm">
                 New to BuJo?{" "}
-                <a href="#" className=" text-blue-500 hover:text-blue-800">
+                <Link
+                    href="/register"
+                    className=" text-blue-500 hover:text-blue-800"
+                >
                     Create an account
-                </a>
+                </Link>
             </p>
             <LoginForm />
         </div>

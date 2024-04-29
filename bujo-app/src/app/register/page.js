@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import RegisterForm from "../components/forms/RegisterForm";
 
 export default function Form() {
@@ -8,9 +8,12 @@ export default function Form() {
             <h1 className="mt-8">Sign up</h1>
             <p className="p-1 m-1 inline-block align-baseline font-bold text-sm">
                 Already have an account?{" "}
-                <a href="#" className=" text-blue-500 hover:text-blue-800">
+                <Link
+                    href="/login"
+                    className=" text-blue-500 hover:text-blue-800"
+                >
                     Login
-                </a>
+                </Link>
             </p>
             <RegisterForm />
         </div>
