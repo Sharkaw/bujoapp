@@ -1,19 +1,26 @@
 import React from "react";
 import "./globals.css";
-// import Header from './components/Header';
-// import Footer from './components/Footer'
+import Sidebar from "./components/layout/sidebar/page";
+// import Header from './components/layout/Header';
+// import Footer from './components/layout/Footer'
 
 const LayoutGrid = ({ children }) => {
     return (
         <html lang="en">
-            <body>
-                <div className="bg-white text-black min-h-screen">
-                    <div className="grid grid-cols-12 gap-4">
-                        {/* <Header /> */}
-                        <main>{children}</main>
-                        {/* <Footer /> */}
+            <body className="flex flex-col">
+                <header className="bg-gray-800 text-white p-4">Header</header>
+                <div className="grid grid-cols-12 gap-4">
+                    <div className="col-span-3 flex">
+                        <Sidebar />
+                    </div>
+                    <div className="col-span-6">
+                        <main className="flex justify-center">{children}</main>
+                    </div>
+                    <div className="col-span-3 flex justify-center">
+                        {/* Content 3 */}
                     </div>
                 </div>
+                <footer className="bg-gray-800 text-white p-4">Footer</footer>
             </body>
         </html>
     );
