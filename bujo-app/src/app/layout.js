@@ -1,14 +1,14 @@
 import React from "react";
 import "./globals.css";
 import Sidebar from "./components/layout/sidebar/page";
-// import Header from './components/layout/Header';
+import Header from './components/layout/Header';
 // import Footer from './components/layout/Footer'
 
 const LayoutGrid = ({ children }) => {
     return (
         <html lang="en">
             <body className="flex flex-col">
-                <header className="bg-gray-800 text-white p-4">Header</header>
+                <Header />
                 <div className="grid grid-cols-12 gap-4">
                     <div className="col-span-3 flex">
                         <Sidebar />
