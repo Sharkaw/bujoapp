@@ -21,9 +21,9 @@ const userLoggedIn = true;
 export default function SidebarMenu({ journals }) {
     if (userLoggedIn) {
         return (
-            <div className="bg-gray-50 h-full border-gray-300 border-solid border-r-8 sidebar ">
-                <Sidebar className="mt-8 ml-8 p-2">
-                    <Sidebar.Items className=" text-gray-800">
+            <div className="bg-gray-50 h-full border-gray-300 border-solid border-r-8 sidebar">
+                <Sidebar className="md:mt-8 md:ml-4 p-2">
+                    <Sidebar.Items className="text-gray-800">
                         <Sidebar.ItemGroup>
                             <Sidebar.Collapse
                                 icon={FiUser}
