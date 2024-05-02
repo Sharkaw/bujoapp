@@ -21,6 +21,23 @@ export default function RegisterForm() {
     const password = useRef({});
     password.current = watch("password", "");
 
+    const onSubmit = async (data) => {
+        const response = await fetch("/api/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            console.log(`User created ${result.id}`);
+        } else {
+            console.log(result.error);
+        }
+    };
+
     return (
         <form
             className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
@@ -39,7 +56,7 @@ export default function RegisterForm() {
                     <input
                         {...register("userName", {
                             required: {
-                                value: 2,
+                                value: true,
                                 message: "Please enter your username",
                             },
                             validate: {},
@@ -93,7 +110,7 @@ export default function RegisterForm() {
                                 "Password needs to be longer than 4 characters.",
                         },
                         pattern: {
-                            value: /[A-Za-z]{3}/,
+                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                             message:
                                 "Password needs to contain uppercase, lowercase, numbers and special characters.",
                         },
@@ -117,7 +134,8 @@ export default function RegisterForm() {
                     {...register("confirmPassword", {
                         require: true,
                         validate: (value) =>
-                            value === password || "Passwords don't match",
+                            value === password.current ||
+                            "Passwords don't match",
                     })}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="confirmPassword"
@@ -136,7 +154,7 @@ export default function RegisterForm() {
                     title="Create"
                     variant="success"
                     type="submit"
-                    // onClick={handleSubmit(onSubmit)}
+                    onClick={handleSubmit(onSubmit)}
                 />
             </div>
         </form>
