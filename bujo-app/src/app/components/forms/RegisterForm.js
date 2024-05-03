@@ -1,7 +1,10 @@
 "use client";
 import { LongButton } from "@/app/components/common/LongButton";
 import { useForm } from "react-hook-form";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import ShowPasswordStrength from "./ShowPasswordStrength";
+import { passwordStrength } from "check-password-strength";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 export default function RegisterForm() {
     const {
@@ -17,9 +20,22 @@ export default function RegisterForm() {
             confirmPassword: "",
         },
     });
+    const [strength, setStrength] = useState(0);
 
     const password = useRef({});
     password.current = watch("password", "");
+
+    useEffect(() => {
+        if (password.current) {
+            console.log(passwordStrength(password.current).id);
+            setStrength(passwordStrength(password.current).id);
+        }
+    }, [password.current]);
+
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
 
     const onSubmit = async (data) => {
         const response = await fetch("/api/register", {
@@ -41,9 +57,7 @@ export default function RegisterForm() {
     return (
         <form
             className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
-            onSubmit={handleSubmit((data) => {
-                console.log(data);
-            })}
+            onSubmit={handleSubmit(onSubmit)}
         >
             <div className="mb-4 p-1">
                 <div>
@@ -94,33 +108,38 @@ export default function RegisterForm() {
                 <p className="text-red-700 font-light text-xs mb-2 min-h-4">
                     {errors.email?.message}
                 </p>
-
                 <label
                     className="block text-gray-800 text-sm font-bold mb-2"
                     htmlFor="password"
                 >
                     Password
                 </label>
-                <input
-                    {...register("password", {
-                        required: "Please type password",
-                        minLength: {
-                            value: 4,
-                            message:
-                                "Password needs to be longer than 4 characters.",
-                        },
-                        pattern: {
-                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                            message:
-                                "Password needs to contain uppercase, lowercase, numbers and special characters.",
-                        },
-                    })}
-                    className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="password"
-                    type="password"
-                    placeholder="******************"
-                />
-                <hr />
+                <div className="flex items-center">
+                    <input
+                        {...register("password", {
+                            required: "Please type password",
+                            minLength: {
+                                value: 4,
+                                message:
+                                    "Password needs to be longer than 4 characters.",
+                            },
+                            pattern: {
+                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                message:
+                                    "Password needs to contain uppercase, lowercase, numbers and special characters.",
+                            },
+                        })}
+                        className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="password"
+                        type={passwordShown ? "text" : "password"}
+                        placeholder="******************"
+                    />
+                    <i onClick={togglePasswordVisiblity}>
+                        {passwordShown ? <FiEye /> : <FiEyeOff />}
+                    </i>
+                </div>
+                <hr className="pb-1" />
+                <ShowPasswordStrength strength={strength} />
                 <p className="text-red-700 font-light text-xs mb-2 min-h-4">
                     {errors.password?.message}
                 </p>
@@ -132,7 +151,7 @@ export default function RegisterForm() {
                 </label>
                 <input
                     {...register("confirmPassword", {
-                        require: true,
+                        required: true,
                         validate: (value) =>
                             value === password.current ||
                             "Passwords don't match",
@@ -142,6 +161,7 @@ export default function RegisterForm() {
                     type="password"
                     placeholder="******************"
                 />
+
                 <hr />
                 <p className=" text-red-700 font-light text-xs mb-2 min-h-4">
                     {errors.confirmPassword && (
@@ -150,12 +170,7 @@ export default function RegisterForm() {
                 </p>
             </div>
             <div className="flex flex-col justify-center items-center">
-                <LongButton
-                    title="Create"
-                    variant="success"
-                    type="submit"
-                    onClick={handleSubmit(onSubmit)}
-                />
+                <LongButton title="Create" variant="success" type="submit" />
             </div>
         </form>
     );
