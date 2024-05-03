@@ -126,7 +126,7 @@ export default function RegisterForm() {
                             pattern: {
                                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                                 message:
-                                    "Password needs to contain uppercase, lowercase, numbers and special characters.",
+                                    "Password needs to contain uppercase, lowercase, number and two special characters.",
                             },
                         })}
                         className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

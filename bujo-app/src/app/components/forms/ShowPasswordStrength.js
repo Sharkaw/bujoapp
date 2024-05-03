@@ -22,7 +22,7 @@ const ShowPasswordStrength = ({ strength }) => {
     return (
         <div className="flex gap-2 items-center">
             <p className="text-xs">{strongness(strength)}</p>
-            {Array.from({ length: strength + 1 }).map((_, index) => (
+            {Array.from({ length: strength + 1 }).map((_i, index) => (
                 <div
                     key={index}
                     className={`h-2 w-6 rounded-md ${backgroundColor(index)}`}
