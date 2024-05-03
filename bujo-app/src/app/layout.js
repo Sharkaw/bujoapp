@@ -1,6 +1,6 @@
 import React from "react";
 import "./globals.css";
-import Sidebar from "./pages/api/journals";
+import Sidebar from "./components/layout/Sidebar";
 // import Header from './components/layout/Header';
 // import Footer from './components/layout/Footer'
 
