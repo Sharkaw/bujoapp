@@ -12,9 +12,10 @@ export default function RegisterForm() {
         handleSubmit,
         formState: { errors },
         watch,
+        reset,
     } = useForm({
         defaultValues: {
-            userName: "",
+            username: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -49,6 +50,8 @@ export default function RegisterForm() {
         const result = await response.json();
         if (response.ok) {
             console.log(`User created ${result.id}`);
+            reset();
+            //redirect to another page
         } else {
             console.log(result.error);
         }
@@ -63,12 +66,12 @@ export default function RegisterForm() {
                 <div>
                     <label
                         className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="userName"
+                        htmlFor="username"
                     >
                         Username
                     </label>
                     <input
-                        {...register("userName", {
+                        {...register("username", {
                             required: {
                                 value: true,
                                 message: "Please enter your username",
@@ -82,7 +85,7 @@ export default function RegisterForm() {
                     />
                     <hr />
                     <p className="text-red-700 font-light text-xs mb-2 min-h-4">
-                        {errors.userName?.message}
+                        {errors.username?.message}
                     </p>
                 </div>
                 <label
@@ -119,9 +122,9 @@ export default function RegisterForm() {
                         {...register("password", {
                             required: "Please type password",
                             minLength: {
-                                value: 4,
+                                value: 8,
                                 message:
-                                    "Password needs to be longer than 4 characters.",
+                                    "Password needs to be atleast 8 characters.",
                             },
                             pattern: {
                                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
