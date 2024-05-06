@@ -1,25 +1,23 @@
-import Link from 'next/link'
-import profile from './profile.png'
+import Link from "next/link";
+import profile from "./profile.png";
+import Image from "next/image";
+import "./styles.css";
 
 export default function Header() {
-  return (
-    <div>
-        <div className="container mx-auto flex items-center px-10 py-2 h-24 bg-gray-300 justify-center">
-            <div className="flex items-center gap-6 nd:gap-8 text-gray-800 justify-center">
-                <Link href="/">
-                    <h1 className="mt-8">BuJo</h1>
-                </Link>
-                <Link legacyBehavior href="/profile">
-                    <a>
-                    <img
+    return (
+        <div className="header flex items-center justify-between p-2 w-full h-24 bg-gray-300 border-b-gray-800 border-solid border-b-8">
+            <Link href="/" className="flex-1 text-center">
+                <h1 className="text-gray-800 mb-0 p-2">BuJo</h1>
+            </Link>
+            <Link href="/profile" className="flex-end m-1 p-1">
+                <Image
                     src={profile}
                     alt="Profile"
-                    className="h-12 w-12 rounded-full cursor-pointer"
-                    />
-                    </a>
-                </Link>
-            </div>
+                    width={48}
+                    height={48}
+                    className="rounded-full"
+                />
+            </Link>
         </div>
-    </div>
-  );
-};
+    );
+}
