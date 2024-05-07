@@ -9,14 +9,14 @@ const LayoutGrid = ({ children }) => {
         <html lang="en">
             <body className="flex flex-col">
                 <Header />
-                <div className="grid grid-cols-12 gap-4">
-                    <div className="col-span-3 flex">
+                <div className="flex flex-col md:flex-row flex-1">
+                    <div className="hidden min-w-60 md:flex md:flex-none">
                         <Sidebar />
                     </div>
-                    <div className="col-span-6">
-                        <main className="flex justify-center">{children}</main>
-                    </div>
-                    <div className="col-span-3 flex justify-center">
+                    <main className="flex-auto flex justify-center">
+                        {children}
+                    </main>
+                    <div className="flex-auto flex justify-center">
                         {/* Content 3 */}
                     </div>
                 </div>
