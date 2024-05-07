@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import ShowPasswordStrength from "./ShowPasswordStrength";
 import { passwordStrength } from "check-password-strength";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+// import { redirect } from "next/navigation";
 
 export default function RegisterForm() {
     const {
@@ -51,7 +52,9 @@ export default function RegisterForm() {
         if (response.ok) {
             console.log(`User created ${result.id}`);
             reset();
-            //redirect to another page
+            // if (session.isLoggedIn) {
+            //     redirect("/");
+            // } (NOTE) Suvi: Coming up later
         } else {
             console.log(result.error);
         }

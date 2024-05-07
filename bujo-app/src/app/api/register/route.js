@@ -10,7 +10,6 @@ function GET(req) {
 async function POST(req) {
     console.log(req.body);
     const { username, email, password } = await req.json();
-
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -21,6 +20,14 @@ async function POST(req) {
                 username: username,
             },
         });
+        // Suvi: Ready for setting up iron session
+        req.session.user = {
+            id: user.id,
+            username: user.username,
+            isLoggedIn: true,
+        };
+        await req.session.save();
+
         return NextResponse.json(
             { id: user.id, username: user.username },
             { status: 200 }
