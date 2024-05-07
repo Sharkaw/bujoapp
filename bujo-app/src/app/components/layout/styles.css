@@ -4,3 +4,7 @@
 .itemStyle {
     @apply text-gray-800 hover:bg-gray-400  focus:bg-gray-400 active:bg-gray-400 text-left;
 }
+
+.header {
+    border-radius: 255px 0px 225px 2px/0px 225px 15px 225px;
+}
