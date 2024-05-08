@@ -1,7 +1,7 @@
 import React from "react";
 import "./globals.css";
-import Sidebar from "./components/layout/sidebar/page";
-import Header from './components/layout/Header';
+import Header from "./components/layout/Header";
+import Sidebar from "./components/layout/Sidebar";
 import Footer from "./components/layout/Footer";
 
 const LayoutGrid = ({ children }) => {
