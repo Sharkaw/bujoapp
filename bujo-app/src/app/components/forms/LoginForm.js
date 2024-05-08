@@ -28,7 +28,7 @@ export default function LoginForm() {
                     Username/email
                 </label>
                 <input
-                    {...register("userName", {
+                    {...register("username", {
                         required: "Please type username",
                     })}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -61,12 +61,7 @@ export default function LoginForm() {
                 {errors.password?.message}
             </p>
             <div className="flex flex-col justify-center items-center">
-                <LongButton
-                    title="Login"
-                    variant="success"
-                    type="submit"
-                    // onClick={handleSubmit(onSubmit)}
-                />
+                <LongButton title="Login" variant="success" type="submit" />
                 <a
                     className="m-1 p-1 inline-block font-bold text-sm text-blue-500 hover:text-blue-800"
                     href="#"
