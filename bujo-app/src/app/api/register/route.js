@@ -21,11 +21,11 @@ async function POST(req) {
             },
         });
         // Suvi: Ready for setting up iron session
-        req.session.user = {
-            id: user.id,
-            username: user.username,
-            isLoggedIn: true,
-        };
+        // req.session.user = {
+        //     id: user.id,
+        //     username: user.username,
+        //     isLoggedIn: true,
+        // };
         await req.session.save();
 
         return NextResponse.json(
