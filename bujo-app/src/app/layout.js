@@ -2,8 +2,7 @@ import React from "react";
 import "./globals.css";
 import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
-
-// import Footer from './components/layout/Footer'
+import Footer from "./components/layout/Footer";
 
 const LayoutGrid = ({ children }) => {
     return (
@@ -21,7 +20,7 @@ const LayoutGrid = ({ children }) => {
                         {/* Content 3 */}
                     </div>
                 </div>
-                <footer className="bg-gray-800 text-white p-4">Footer</footer>
+                <Footer />
             </body>
         </html>
     );
