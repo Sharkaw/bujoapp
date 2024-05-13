@@ -15,23 +15,23 @@ export default function Footer() {
                 <div className="flex flex-wrap content-start w-full md:w-3/5 max-w-[900px] p-5">
                 <nav className="w-full">
                         <ul className="flex flex-wrap content-start w-full">
-                            <li className="w-full md:w-1/2 pb-3 font-kalam text-2xl"><Link className="hover:underline" href="/">Contact us</Link></li>
-                            <li className="w-full md:w-1/2 pb-3 font-kalam text-2xl"><Link className="hover:underline" href="/">Terms & Conditions</Link></li>
-                            <li className="w-full md:w-1/2 pb-3 font-kalam text-2xl"><Link className="hover:underline" href="/">About us</Link></li>
-                            <li className="w-full md:w-1/2 pb-3 font-kalam text-2xl"><Link className="hover:underline" href="/">Privacy Policy</Link></li>
-                            <li className="w-full md:w-1/2 pb-3 font-kalam text-2xl"><Link className="hover:underline" href="/">Support</Link></li>
-                            <li className="w-full md:w-1/2 pb-3 font-kalam text-2xl"><Link className="hover:underline" href="/">Terms of use</Link></li>
+                            <li className="w-full md:w-1/2 pb-3 font-kalam text-xl"><Link className="hover:underline" href="/">Contact us</Link></li>
+                            <li className="w-full md:w-1/2 pb-3 font-kalam text-xl"><Link className="hover:underline" href="/">Terms & Conditions</Link></li>
+                            <li className="w-full md:w-1/2 pb-3 font-kalam text-xl"><Link className="hover:underline" href="/">About us</Link></li>
+                            <li className="w-full md:w-1/2 pb-3 font-kalam text-xl"><Link className="hover:underline" href="/">Privacy Policy</Link></li>
+                            <li className="w-full md:w-1/2 pb-3 font-kalam text-xl"><Link className="hover:underline" href="/">Support</Link></li>
+                            <li className="w-full md:w-1/2 pb-3 font-kalam text-xl"><Link className="hover:underline" href="/">Terms of use</Link></li>
                             
                         </ul>
                     </nav>
                 </div>
                 <div className="flex flex-wrap w-full md:w-1/4 bg-gray-800 gap-2">
-                    <a href="#"><Image src={fb} alt="facebook" className="h-20 w-20" /></a>
-                    <a href="#"><Image src={insta} alt="instagram" className="h-20 w-20" /></a>
-                    <a href="#"><Image src={fb} alt="facebook" className="h-20 w-20" /></a>
-                    <a href="#"><Image src={insta} alt="instagram" className="h-20 w-20" /></a>
-                    <a href="#"><Image src={fb} alt="facebook" className="h-20 w-20" /></a>
-                    <a href="#"><Image src={insta} alt="instagram" className="h-20 w-20" /></a>
+                    <a href="#"><Image src={fb} alt="facebook" className="h-12 w-12" /></a>
+                    <a href="#"><Image src={insta} alt="instagram" className="h-12 w-12" /></a>
+                    <a href="#"><Image src={fb} alt="facebook" className="h-12 w-12" /></a>
+                    <a href="#"><Image src={insta} alt="instagram" className="h-12 w-12" /></a>
+                    <a href="#"><Image src={fb} alt="facebook" className="h-12 w-12" /></a>
+                    <a href="#"><Image src={insta} alt="instagram" className="h-12 w-12" /></a>
                 </div>
             </div>
             <div className="flex justify-center w-full my-3">
