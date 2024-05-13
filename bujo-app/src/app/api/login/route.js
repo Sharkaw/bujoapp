@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
 
 async function POST(req) {
-    console.log("Headers:", req.headers);
     const body = await req.json();
     console.log("Body:", body);
 
@@ -21,7 +20,9 @@ async function POST(req) {
             },
         });
 
-        if (user && (await bcrypt.compare(password, user.password))) {
+        const match = await bcrypt.compare(password, user.password);
+
+        if (user && match) {
             return NextResponse.json(
                 { id: user.id, email: user.email },
                 { status: 200 }
