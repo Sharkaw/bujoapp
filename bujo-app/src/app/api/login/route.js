@@ -9,12 +9,13 @@ async function POST(req) {
     const { email, password } = body;
 
     try {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findUniqueOrThrow({
             where: {
                 email: email,
             },
             select: {
                 id: true,
+                username: true,
                 email: true,
                 password: true,
             },
