@@ -9,16 +9,19 @@ export default function LoginForm() {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        const queryParams = new URLSearchParams(data).toString();
+        const response = await fetch(`/api/user?${queryParams}`, {
+            method: "GET",
+        });
+
+        console.log(await response.text());
     };
 
     return (
         <form
             className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
-            onSubmit={handleSubmit((data) => {
-                console.log(data);
-            })}
+            onSubmit={handleSubmit(onSubmit)}
         >
             <div className="mb-4 p-1 border-b">
                 <label
