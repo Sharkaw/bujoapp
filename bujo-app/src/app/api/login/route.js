@@ -1,29 +1,24 @@
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
+import { prisma } from "@/app/lib/prisma";
 
-const prisma = new PrismaClient();
 async function POST(req) {
     console.log("Headers:", req.headers);
     const body = await req.json();
     console.log("Body:", body);
 
-    const { username, password } = body;
-
-    console.log("HERE", password);
+    const { email, password } = body;
 
     try {
         const user = await prisma.user.findUnique({
             where: {
-                // email: email,
-                username: username,
+                email: email,
             },
-            // select: {
-            //     id: true,
-            //     email: true,
-            //     password: true,
-            //     isLoggedIn: true,
-            // },
+            select: {
+                id: true,
+                email: true,
+                password: true,
+            },
         });
 
         if (user && (await bcrypt.compare(password, user.password))) {
