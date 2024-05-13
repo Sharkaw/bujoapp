@@ -10,9 +10,11 @@ export default function LoginForm() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        const queryParams = new URLSearchParams(data).toString();
-        const response = await fetch(`/api/user?${queryParams}`, {
-            method: "GET",
+        console.log(data);
+        //const queryParams = new URLSearchParams(data).toString();
+        const response = await fetch("/api/login", {
+            method: "POST",
+            body: JSON.stringify(data)
         });
 
         console.log(await response.text());
