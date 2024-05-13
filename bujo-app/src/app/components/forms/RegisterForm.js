@@ -29,7 +29,6 @@ export default function RegisterForm() {
 
     useEffect(() => {
         if (password.current) {
-            console.log(passwordStrength(password.current).id);
             setStrength(passwordStrength(password.current).id);
         }
     }, [password.current]);

@@ -10,14 +10,12 @@ export default function LoginForm() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data);
-        //const queryParams = new URLSearchParams(data).toString();
         const response = await fetch("/api/login", {
             method: "POST",
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
         });
 
-        console.log(await response.text());
+        console.log(await response.json());
     };
 
     return (
@@ -30,7 +28,7 @@ export default function LoginForm() {
                     className="block text-gray-700 text-sm font-bold mb-2"
                     htmlFor="userName"
                 >
-                    Username/email
+                    Email
                 </label>
                 <input
                     {...register("username", {
