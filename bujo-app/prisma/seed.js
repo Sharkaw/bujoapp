@@ -1,8 +1,6 @@
 // This is a seed file for Prisma
 
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
+import { prisma } from "@/app/lib/prisma";
 
 async function main() {
     const alice = await prisma.user.upsert({

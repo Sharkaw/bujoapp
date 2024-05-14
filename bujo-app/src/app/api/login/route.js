@@ -1,14 +1,14 @@
 import bcrypt from "bcrypt";
-import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma";
-
+import { sessionOptions } from "@/app/lib/session";
+import { NextResponse } from "next/server";
+import { getIronSession } from "iron-session";
 async function POST(req) {
-    const body = await req.json();
-    console.log("Body:", body);
-
-    const { email, password } = body;
-
     try {
+        const body = await req.json();
+        const { email, password } = body;
+
+        console.log("Attempting to find user with email:", email);
         const user = await prisma.user.findUniqueOrThrow({
             where: {
                 email: email,
@@ -20,19 +20,68 @@ async function POST(req) {
                 password: true,
             },
         });
+        console.log("User found:", user);
 
         const match = await bcrypt.compare(password, user.password);
+        console.log("Password match:", match);
 
-        if (user && match) {
-            return NextResponse.json(
-                { id: user.id, email: user.email },
-                { status: 200 }
-            );
+        if (match) {
+            console.log("Creating session...");
+            const response = NextResponse.next();
+
+            try {
+                const session = await getIronSession(
+                    req,
+                    response,
+                    sessionOptions
+                );
+                session.user = { id: user.id, email: user.email };
+                await session.save();
+                console.log("Session saved:", session);
+
+                return new NextResponse(
+                    JSON.stringify({
+                        message: "User logged in",
+                        id: user.id,
+                        email: user.email,
+                    }),
+                    {
+                        status: 200,
+                        headers: { "Content-Type": "application/json" },
+                    }
+                );
+            } catch (sessionError) {
+                console.error("Error saving session:", sessionError);
+                return new NextResponse(
+                    JSON.stringify({
+                        message: "Error saving session",
+                        error: sessionError.message,
+                    }),
+                    {
+                        status: 500,
+                        headers: { "Content-Type": "application/json" },
+                    }
+                );
+            }
         } else {
-            throw new Error("Invalid credentials");
+            console.log("Invalid credentials");
+            return new NextResponse(
+                JSON.stringify({ message: "Invalid credentials" }),
+                {
+                    status: 401,
+                    headers: { "Content-Type": "application/json" },
+                }
+            );
         }
     } catch (error) {
-        throw new Error("Login failed.");
+        console.error("Error during login:", error);
+        return new NextResponse(
+            JSON.stringify({ message: "Login failed.", error: error.message }),
+            {
+                status: 500,
+                headers: { "Content-Type": "application/json" },
+            }
+        );
     }
 }
 
