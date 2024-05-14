@@ -16,7 +16,7 @@ const ProfilePage = () => {
       </div>
       <div className="flex flex-col w-full md:w-1/3 justify-around mx-auto max-w-80 mt-10 md:mt-0 pr-3">
         <div>
-          <div className="border-black border-2 max-w-40 md:max-w-60 mx-auto">
+          <div className="max-w-40 md:max-w-60 mx-auto">
             <Image src={profile} alt="user" className=" rounded-full" />
           </div>
           <p className="w-full text-stone-900 my-5 text-center font-bold">Username</p>
