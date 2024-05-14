@@ -7,7 +7,7 @@ import Footer from "./components/layout/Footer";
 const LayoutGrid = ({ children }) => {
     return (
         <html lang="en">
-            <body className="flex flex-col">
+            <body className="flex flex-col bg-white">
                 <Header />
                 <div className="flex flex-col md:flex-row flex-1">
                     <div className="hidden min-w-60 md:flex md:flex-none">
