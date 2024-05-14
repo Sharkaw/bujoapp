@@ -26,22 +26,22 @@ export default function LoginForm() {
             <div className="mb-4 p-1 border-b">
                 <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="userName"
+                    htmlFor="email"
                 >
                     Email
                 </label>
                 <input
-                    {...register("username", {
-                        required: "Please type username",
+                    {...register("email", {
+                        required: "Please type email",
                     })}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="userName"
+                    id="email"
                     type="text"
-                    placeholder="Username"
+                    placeholder="Email"
                 />
             </div>
             <p className="text-red-700 font-light text-xs mb-2 min-h-4">
-                {errors.userName?.message}
+                {errors.email?.message}
             </p>
             <div className="mb-4 p-1 border-b">
                 <label
