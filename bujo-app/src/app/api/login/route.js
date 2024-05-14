@@ -8,7 +8,6 @@ async function POST(req) {
         const body = await req.json();
         const { email, password } = body;
 
-        console.log("Attempting to find user with email:", email);
         const user = await prisma.user.findUniqueOrThrow({
             where: {
                 email: email,
@@ -20,13 +19,10 @@ async function POST(req) {
                 password: true,
             },
         });
-        console.log("User found:", user);
 
         const match = await bcrypt.compare(password, user.password);
-        console.log("Password match:", match);
 
         if (match) {
-            console.log("Creating session...");
             const response = NextResponse.next();
 
             try {
@@ -36,8 +32,8 @@ async function POST(req) {
                     sessionOptions
                 );
                 session.user = { id: user.id, email: user.email };
+
                 await session.save();
-                console.log("Session saved:", session);
 
                 return new NextResponse(
                     JSON.stringify({
@@ -51,7 +47,6 @@ async function POST(req) {
                     }
                 );
             } catch (sessionError) {
-                console.error("Error saving session:", sessionError);
                 return new NextResponse(
                     JSON.stringify({
                         message: "Error saving session",
@@ -64,7 +59,6 @@ async function POST(req) {
                 );
             }
         } else {
-            console.log("Invalid credentials");
             return new NextResponse(
                 JSON.stringify({ message: "Invalid credentials" }),
                 {
@@ -74,7 +68,6 @@ async function POST(req) {
             );
         }
     } catch (error) {
-        console.error("Error during login:", error);
         return new NextResponse(
             JSON.stringify({ message: "Login failed.", error: error.message }),
             {
