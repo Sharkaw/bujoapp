@@ -7,7 +7,7 @@ import insta from "@/assets/insta-small.png";
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-800 p-5 md:pt-12">
+        <footer className="bg-gray-800 p-5 md:pt-12 text-white">
             <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/5 flex justify-center">
                     <Link href="/"><h1>BuJo</h1></Link>
