@@ -5,12 +5,17 @@ import Sidebar from "./components/layout/Sidebar";
 import Footer from "./components/layout/Footer";
 
 const LayoutGrid = ({ children }) => {
+
+    // function handleMobileMenuClick() {
+    //     console.log("clicked");
+    // }
+
     return (
         <html lang="en">
             <body className="flex flex-col bg-white text-gray-800">
                 <Header />
-                <div className="flex flex-col md:flex-row flex-1">
-                    <div className="hidden min-w-60 md:flex md:flex-none">
+                <div className="flex flex-col lg:flex-row flex-1">
+                    <div className="min-w-60 flex">
                         <Sidebar />
                     </div>
                     <main className="flex-auto flex justify-center">
