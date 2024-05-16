@@ -1,6 +1,8 @@
 import Link from "next/link";
 import profile from "./profile.png";
 import Image from "next/image";
+import { HamburgerMenuButton } from "../common/HamburgerMenuButton";
+
 import "./styles.css";
 
 export default function Header() {
@@ -15,9 +17,10 @@ export default function Header() {
                     alt="Profile"
                     width={48}
                     height={48}
-                    className="rounded-full"
+                    className="rounded-full  hidden lg:flex"
                 />
             </Link>
+            <HamburgerMenuButton />
         </div>
     );
 }
