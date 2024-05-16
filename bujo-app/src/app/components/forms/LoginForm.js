@@ -1,10 +1,8 @@
 "use client";
 import { LongButton } from "@/app/components/common/LongButton";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
 
 export default function LoginForm() {
-    const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -12,16 +10,10 @@ export default function LoginForm() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        const response = await fetch("/api/login", {
+        await fetch("/api/login", {
             method: "POST",
             body: JSON.stringify(data),
         });
-
-        if (response.status === 200) {
-            router.push("/profile");
-        } else {
-            console.error("Login failed:", result.message);
-        }
     };
 
     return (
