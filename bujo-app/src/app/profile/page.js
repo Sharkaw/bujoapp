@@ -44,7 +44,7 @@ const ProfilePage = () => {
             <Image src={profile} alt="user" className=" rounded-full" />
           </div>
           <p className="w-full text-stone-900 my-5 text-center font-bold">Username</p>
-          <div className="flex flex-col w-7/12 mt-10 md:mt-0 justify-center min-h-36">
+          <div className="flex flex-col mt-10 md:mt-0 justify-center min-h-36">
             <BaseButton title="Choose avatar" variant="primary" type="submit" onClick={toggleModal} />
             <BaseButton title="Save profile" variant="success" type="submit" />
             <BaseButton title="Delete profile" variant="danger" type="submit" />
