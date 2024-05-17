@@ -12,7 +12,7 @@ function handleMobileMenu() {
 
 export function HamburgerMenuButton() {
     return (
-        <div id="sidebarMobileBtn" className="flex pr-4 cursor-pointer md:hidden">
+        <div id="sidebarMobileBtn" className="flex px-4 cursor-pointer md:hidden">
             <div id="openMobileMenuBtn" onClick={handleMobileMenu}>
                 <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
