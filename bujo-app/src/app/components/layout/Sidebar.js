@@ -1,3 +1,4 @@
+import { getSession } from "@/app/actions";
 import SidebarMenu from "@/app/components/layout/SidebarMenu";
 import { PrismaClient } from "@prisma/client";
 
@@ -16,7 +17,15 @@ export default async function Sidebar() {
                 },
             },
         });
-        return <SidebarMenu journals={journals.Bookshelf[0].journal} />;
+        const session = await getSession();
+
+        return (
+            <>
+                {session && (
+                    <SidebarMenu journals={journals.Bookshelf[0].journal} />
+                )}
+            </>
+        );
     } catch (error) {
         console.error("Failed to fetch bookshelves:", error);
     } finally {

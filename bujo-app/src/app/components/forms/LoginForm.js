@@ -1,25 +1,40 @@
 "use client";
+import { login } from "@/app/actions";
 import { LongButton } from "@/app/components/common/LongButton";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export default function LoginForm() {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = async (data) => {
-        await fetch("/api/login", {
-            method: "POST",
-            body: JSON.stringify(data),
-        });
+    const [data, setData] = useState();
+
+    const processForm = async (data) => {
+        const result = await login(data);
+
+        if (!result) {
+            console.log("Something went wrong");
+            return;
+        }
+
+        if (result.error) {
+            console.log(result.error);
+            return;
+        }
+
+        reset();
+        setData(result.data);
     };
 
     return (
         <form
             className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(processForm)}
         >
             <div className="mb-4 p-1 border-b">
                 <label
