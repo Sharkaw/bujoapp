@@ -17,7 +17,7 @@ export default function Header() {
                     alt="Profile"
                     width={48}
                     height={48}
-                    className="rounded-full  hidden lg:flex"
+                    className="rounded-full  hidden md:flex"
                 />
             </Link>
             <HamburgerMenuButton />

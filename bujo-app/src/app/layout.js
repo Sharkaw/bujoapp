@@ -6,15 +6,13 @@ import Footer from "./components/layout/Footer";
 
 const LayoutGrid = ({ children }) => {
 
-    // function handleMobileMenuClick() {
-    //     console.log("clicked");
-    // }
-
     return (
         <html lang="en">
             <body className="flex flex-col bg-white text-gray-800">
-                <Header />
-                <div className="flex flex-col lg:flex-row flex-1">
+                <div id="headerDiv" className="">
+                    <Header />
+                </div>
+                <div className="flex flex-col md:flex-row flex-1">
                     <div className="min-w-60 flex">
                         <Sidebar />
                     </div>

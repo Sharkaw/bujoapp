@@ -18,28 +18,13 @@ import "./styles.css";
 //dummy code waiting for more features
 const userLoggedIn = true;
 
-// function openMobileMenu() {
-//     // console.log("open menu");
-//     document.getElementById("sidebar")?.classList.remove("hidden");
-//     document.getElementById("sidebarMobileBtn")?.classList.add("bg-gray-50");
-//     document.getElementById("openMobileMenuBtn")?.classList.add("hidden");
-//     document.getElementById("closeMobileMenuBtn")?.classList.remove("hidden");
-// }
-// function closeMobileMenu() {
-//     // console.log("close menu");
-//     document.getElementById("sidebar")?.classList.add("hidden");
-//     document.getElementById("sidebarMobileBtn")?.classList.remove("bg-gray-50");
-//     document.getElementById("openMobileMenuBtn")?.classList.remove("hidden");
-//     document.getElementById("closeMobileMenuBtn")?.classList.add("hidden");    
-// }
-
 export default function SidebarMenu({ journals }) {
     
     if (userLoggedIn) {
         return (
             <>
-                <div id="sidebarDiv" className="bg-gray-50 h-full w-full border-slate-300 border-solid border-r-4 sidebar lg:border-b-0">
-                    <Sidebar id="sidebar" className="md:mt-8 mx-auto lg:ml-4 p-2 hidden lg:flex">
+                <div id="sidebarDiv" className="bg-gray-50 h-full w-full border-slate-300 border-solid border-r-4 sidebar md:border-b-0">
+                    <Sidebar id="sidebar" className="md:mt-8 mx-auto lg:ml-4 p-2 hidden md:flex">
                         <Sidebar.Items className="text-gray-80">
                             <Sidebar.ItemGroup>
                                 <Sidebar.Collapse
