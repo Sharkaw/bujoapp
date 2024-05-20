@@ -1,6 +1,8 @@
 import Link from "next/link";
 import profile from "./profile.png";
 import Image from "next/image";
+import { HamburgerMenuButton } from "../common/HamburgerMenuButton";
+
 import "./styles.css";
 
 export default function Header() {
@@ -9,7 +11,7 @@ export default function Header() {
             <Link href="/" className="flex-1 text-center">
                 <h1 className="text-gray-800 mb-0 p-2">BuJo</h1>
             </Link>
-            <Link href="/profile" className="flex-end m-1 p-1">
+            <Link href="/profile" className="flex-end m-1 p-1 hidden md:flex">
                 <Image
                     src={profile}
                     alt="Profile"
@@ -18,6 +20,7 @@ export default function Header() {
                     className="rounded-full"
                 />
             </Link>
+            <HamburgerMenuButton />
         </div>
     );
 }
