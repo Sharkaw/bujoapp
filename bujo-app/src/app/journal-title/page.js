@@ -1,8 +1,4 @@
 import React from 'react';
-import Image from "next/image";
-import { LongButton } from "@/app/components/common/LongButton";
-import { IconButton } from "@/app/components/common/IconButton";
-import { BaseButton } from "@/app/components/common/BaseButton";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";

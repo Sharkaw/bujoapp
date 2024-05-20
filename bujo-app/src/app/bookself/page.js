@@ -69,6 +69,16 @@ const BookShelfPage = () => {
               <RiDeleteBin6Line className="h-8 w-8 cursor-pointer" />
             </div>
           </div>
+          <div className="flex m-3 lg:m-5 w-40 md:w-48 lg:w-72">
+            <div className="flex flex-col">
+              <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40 lg:h-60 lg:w-60" />
+              <p className="text-gray-800 mt-2 ml-4 font-semibold text-center text-xl">Note title</p>
+            </div>
+            <div className="flex flex-col justify-end h-32 md:h-40 lg:h-60">
+              <FiEdit3 className="h-8 w-8 mb-5 cursor-pointer"/>
+              <RiDeleteBin6Line className="h-8 w-8 cursor-pointer" />
+            </div>
+          </div>
         </div>
         {/* <div className="notes flex-col w-full border-4 border-slate-300 mt-10">
           <div className="flex w-full py-3 justify-between">
