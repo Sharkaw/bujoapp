@@ -16,9 +16,7 @@ const LayoutGrid = ({ children }) => {
                     <main className="flex-auto flex justify-center">
                         {children}
                     </main>
-                    <div className="flex-auto flex justify-center">
-                        {/* Content 3 */}
-                    </div>
+                    
                 </div>
                 <Footer />
             </body>
