@@ -5,7 +5,10 @@ import { PrismaClient } from "@prisma/client";
 export default async function Sidebar() {
     const prisma = new PrismaClient();
     try {
-        const username = "Alice";
+        // const username = "Alice";
+        const session = await getSession();
+        console.log(session);
+        const username = session.user.username;
 
         const journals = await prisma.user.findUnique({
             where: { username: username },
@@ -17,12 +20,11 @@ export default async function Sidebar() {
                 },
             },
         });
-        const session = await getSession();
 
         return (
             <>
-                {session && (
-                    <SidebarMenu journals={journals.Bookshelf[0].journal} />
+                {session.isLoggedIn && (
+                    <SidebarMenu journals={journals?.Bookshelf[0].journal} />
                 )}
             </>
         );

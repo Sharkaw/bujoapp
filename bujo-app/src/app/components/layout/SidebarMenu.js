@@ -55,16 +55,22 @@ export default function SidebarMenu({ journals }) {
                                 Create journal
                             </Sidebar.Item>
                             <hr />
-                            {journals.map((journal, index) => (
-                                <Sidebar.Item
-                                    href="#"
-                                    icon={FiBookOpen}
-                                    key={index}
-                                    className="itemStyle"
-                                >
-                                    {journal.title}
+                            {journals.length > 0 ? (
+                                journals.map((journal, index) => (
+                                    <Sidebar.Item
+                                        href="#"
+                                        icon={FiBookOpen}
+                                        key={index}
+                                        className="itemStyle"
+                                    >
+                                        {journal.title}
+                                    </Sidebar.Item>
+                                ))
+                            ) : (
+                                <Sidebar.Item className="itemStyle">
+                                    No journals yet. Create your first journal!
                                 </Sidebar.Item>
-                            ))}
+                            )}
                         </Sidebar.Collapse>
                         <Sidebar.Collapse
                             icon={FiPlusCircle}

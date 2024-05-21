@@ -1,7 +1,7 @@
 "use server";
 
 import { getIronSession } from "iron-session";
-import { defaultSession, sessionOptions } from "./lib";
+import { defaultSession, sessionOptions } from "./lib/lib";
 import { cookies } from "next/headers";
 import { hashPassword, comparePassword } from "./lib/auth";
 // import { prisma } from "@/app/lib/prisma";
@@ -38,7 +38,11 @@ export const login = async (formData) => {
     const match = await comparePassword(formData.password, user.password);
 
     if (match) {
-        session.user = { id: user.id, email: user.email };
+        session.user = {
+            id: user.id,
+            email: user.email,
+            username: user.username,
+        };
 
         await session.save();
 
@@ -80,7 +84,7 @@ export const registerUser = async (formData) => {
         },
     });
 
-    session.user = { id: user.id, email: user.email };
+    session.user = { id: user.id, email: user.email, username: user.username };
     await session.save();
-    // await prisma.$disconnect();
+    await prisma.$disconnect();
 };
