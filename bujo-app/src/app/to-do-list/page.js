@@ -4,48 +4,51 @@ import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 
-const JournalTitlePage = () => {
+import { ImCheckboxUnchecked } from "react-icons/im";
+import { MdCheckBoxOutlineBlank } from "react-icons/md";
+
+import { IoMdCheckboxOutline } from "react-icons/io";
+import { TiInputCheckedOutline } from "react-icons/ti";
+import { TiInputChecked } from "react-icons/ti";
+import { TfiCheckBox } from "react-icons/tfi";
+import { TbCheckbox } from "react-icons/tb";
+
+import { CheckBox } from '../components/to-do-list/CheckBox';
+
+const ToDoListPage = () => {
   return (
-    <div className="flex flex-col md:flex-row w-full max-w-[1000px] mb-10 mx-3 lg:mx-10">
-      <div className="flex flex-col mt-5 w-full mx-auto">
+    <div className="flex flex-col md:flex-row w-full max-w-[1000px] mb-10 mx-5 lg:mx-10">
+      <div className="flex flex-col mt-5 w-full">
         <div className="flex flex-row justify-between">
-          <h1 className="text-gray-800">Journal Title</h1>
+          <h1 className="text-gray-800">To Do List</h1>
           {/* <div className="ml-10">
             <BaseButton title="Create new" variant="primary" type="submit" />
           </div> */}
         </div>
-        <div className="flex-col w-full mt-5">
-          {/* <div className="flex w-full py-3 justify-between border-b-2 border-gray-300 border-dashed"> */}
-          <div className="flex w-full py-3 justify-between">
-            <p className="text-gray-800 mt-2 w-1/3 font-bold text-center text-3xl tracking-wider font-kalam">Titles</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-bold text-center text-3xl tracking-wider font-kalam">Dates</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-bold text-center text-3xl tracking-wider font-kalam">Type</p>
+        <div className="flex-col w-full md:w-4/5 mt-5">
+          <CheckBox title={"to do"} status={"unchecked"} />
+          {/* <div className="flex w-full h-14 justify-between border-b-2 border-gray-300 border-dashed">
+            <ImCheckboxUnchecked className="text-gray-800 mt-2 mr-4 ml-3 w-1/12 font-bold text-center text-3xl cursor-pointer"/>
+            <p className="text-gray-800 mt-2 w-11/12 font-semibold text-3xl font-kalam">to do</p>
+          </div> */}
+          <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
+            <TiInputCheckedOutline className="text-stone-400 mr-2 text-6xl cursor-pointer"/>
+            <p className=" text-stone-400 mt-2 w-11/12 font-semibold text-3xl font-kalam self-center">Done</p>
           </div>
-          <Link href="/to-do-list">
-            <div className="flex w-full py-1 justify-between hover:bg-gray-200 cursor-pointer">
-              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Demo To Do</p>
-              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">17.03.2024</p>
-              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">To Do</p>
-            </div>
-            </Link>
-          <Link href="/notes">
-            <div className="flex w-full py-1 justify-between hover:bg-gray-200 cursor-pointer">
-              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Demo Notes</p>
-              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">05.03.2024</p>
-              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Notes</p>
-            </div>
-          </Link>
-          <div className="flex w-full py-1 justify-between hover:bg-gray-200 cursor-pointer">
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Title 3</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">18.03.2024</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Sticky Notes</p>
+          <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
+            <TiInputCheckedOutline className="text-stone-400 mr-2 text-6xl cursor-pointer"/>
+            <p className=" text-stone-400 mt-2 w-11/12 font-semibold text-3xl font-kalam self-center">Done</p>
           </div>
-          <div className="flex w-full py-1 justify-between hover:bg-gray-200 cursor-pointer">
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Title 4</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">18.03.2024</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Calendar</p>
+          <CheckBox title={"to do"} status={"unchecked"} />
+          <CheckBox title={"to do"} status={"unchecked"} />
+          <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
+            <TiInputCheckedOutline className="text-stone-400 mr-2 text-6xl cursor-pointer"/>
+            <p className=" text-stone-400 mt-2 w-11/12 font-semibold text-3xl font-kalam self-center">Done</p>
           </div>
+          <CheckBox title={"to do"} status={"unchecked"} />
+          <CheckBox title={"to do"} status={"unchecked"} />
         </div>
+        
         {/* <div className="flex flex-wrap md:w-1/4 gap-2 mt-0 md:mt-5 justify-center">
           <BsJournalBookmarkFill className=" h-60 w-60" />
           <BsJournalBookmarkFill className="h-9 w-9" />
@@ -113,4 +116,4 @@ const JournalTitlePage = () => {
   );  
 };
 
-export default JournalTitlePage;
+export default ToDoListPage;
