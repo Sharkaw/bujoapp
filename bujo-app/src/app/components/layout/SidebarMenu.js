@@ -14,6 +14,7 @@ import {
 import { LuStickyNote } from "react-icons/lu";
 import { Sidebar } from "flowbite-react";
 import "./styles.css";
+import { PiBooks } from "react-icons/pi";
 
 //dummy code waiting for more features
 const userLoggedIn = true;
@@ -24,8 +25,8 @@ export default function SidebarMenu({ journals }) {
         return (
             <>
                 <div id="sidebarDiv" className="bg-gray-50 h-full w-full border-slate-300 border-solid border-r-4 sidebar md:border-b-0">
-                    <Sidebar id="sidebar" className="md:mt-8 mx-auto lg:ml-4 p-2 hidden md:flex">
-                        <Sidebar.Items className="text-gray-80">
+                    <Sidebar id="sidebar" className="md:mt-8 mx-auto p-2 hidden md:flex">
+                        <Sidebar.Items className="">
                             <Sidebar.ItemGroup>
                                 <Sidebar.Collapse
                                     icon={FiUser}
@@ -47,6 +48,15 @@ export default function SidebarMenu({ journals }) {
                                     label="Bookshelf"
                                     className="itemStyle"
                                 >
+                                    
+                                    <Sidebar.Item
+                                        href="/bookshelf"
+                                        icon={PiBooks}
+                                        className="itemStyle"
+                                    >
+                                        All Journals
+                                    </Sidebar.Item>
+                                    <hr />
                                     <Sidebar.Item
                                         href="#"
                                         icon={FiEdit2}
@@ -55,7 +65,14 @@ export default function SidebarMenu({ journals }) {
                                         Create journal
                                     </Sidebar.Item>
                                     <hr />
-                                    {journals.map((journal, index) => (
+                                    <Sidebar.Item
+                                        href="/journal-title"
+                                        icon={FiBookOpen}
+                                        className="itemStyle"
+                                    >
+                                        Demo Journal
+                                    </Sidebar.Item>
+                                    {/* {journals.map((journal, index) => (
                                         <Sidebar.Item
                                             href="#"
                                             icon={FiBookOpen}
@@ -64,7 +81,7 @@ export default function SidebarMenu({ journals }) {
                                         >
                                             {journal.title}
                                         </Sidebar.Item>
-                                    ))}
+                                    ))} */}
                                 </Sidebar.Collapse>
                                 <Sidebar.Collapse
                                     icon={FiPlusCircle}

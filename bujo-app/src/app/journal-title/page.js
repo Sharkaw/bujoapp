@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";
@@ -25,11 +26,13 @@ const JournalTitlePage = () => {
             <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">17.03.2024</p>
             <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">To Do</p>
           </div>
-          <div className="flex w-full py-1 justify-between hover:bg-gray-200 cursor-pointer">
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Title 2</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">05.03.2024</p>
-            <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Notes</p>
-          </div>
+          <Link href="/notes">
+            <div className="flex w-full py-1 justify-between hover:bg-gray-200 cursor-pointer">
+              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Demo Notes</p>
+              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">05.03.2024</p>
+              <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Notes</p>
+            </div>
+          </Link>
           <div className="flex w-full py-1 justify-between hover:bg-gray-200 cursor-pointer">
             <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">Title 3</p>
             <p className="text-gray-800 mt-2 w-1/3 font-semibold text-center">18.03.2024</p>

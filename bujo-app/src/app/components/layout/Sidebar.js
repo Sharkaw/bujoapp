@@ -16,7 +16,7 @@ export default async function Sidebar() {
                 },
             },
         });
-        return <SidebarMenu journals={journals.Bookshelf[0].journal} />;
+        return <SidebarMenu journals={journals.Bookshelf[0].journal}/>;
     } catch (error) {
         console.error("Failed to fetch bookshelves:", error);
     } finally {

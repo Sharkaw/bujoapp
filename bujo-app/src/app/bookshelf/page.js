@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 import Image from "next/image";
 import { LongButton } from "@/app/components/common/LongButton";
 import { IconButton } from "@/app/components/common/IconButton";
@@ -18,7 +19,7 @@ const BookShelfPage = () => {
         <div className="flex flex-row justify-between">
           <h1 className="text-gray-800 mb-5">Bookshelf</h1>
           <div className="ml-10">
-            <BaseButton title="Create new" variant="primary" type="submit" />
+            <BaseButton title="Create new" variant="success" type="submit" />
             {/* <BaseButton title="Delete" variant="danger" type="submit" /> */}
           </div>
         </div>
@@ -41,8 +42,10 @@ const BookShelfPage = () => {
         <div className="flex flex-wrap gap-2 mt-0 md:mt-5">
           <div className="flex m-3 lg:m-5 w-40 md:w-48 lg:w-72">
             <div className="flex flex-col">
-              <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40 lg:h-60 lg:w-60" />
-              <p className="text-gray-800 mt-2 ml-4 font-semibold text-center text-xl w-max-32">Note title</p>
+              <Link href="/journal-title">
+                <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40 lg:h-60 lg:w-60" />
+                <p className="text-gray-800 mt-2 ml-4 font-semibold text-center text-xl w-max-32">Demo Journal</p>
+              </Link>
             </div>
             <div className="flex flex-col justify-end h-32 md:h-40 lg:h-60">
               <FiEdit3 className="h-8 w-8 mb-5 cursor-pointer"/>

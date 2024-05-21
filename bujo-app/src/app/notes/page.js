@@ -16,7 +16,7 @@ const NotesPage = () => {
         <div className="flex flex-row justify-between">
           <h1 className="text-gray-800 mb-5">Notes</h1>
           <div className=" ml-10">
-            <BaseButton title="Create new" variant="primary" type="submit" />
+            <BaseButton title="Create new" variant="success" type="submit" />
           </div>
         </div>
         <div className="notes flex-col w-full border-4 border-slate-300 mt-5">
