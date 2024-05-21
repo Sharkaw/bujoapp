@@ -44,6 +44,8 @@ export const login = async (formData) => {
             username: user.username,
         };
 
+        session.isLoggedIn = true;
+
         await session.save();
 
         // redirect("/register");
@@ -87,4 +89,33 @@ export const registerUser = async (formData) => {
     session.user = { id: user.id, email: user.email, username: user.username };
     await session.save();
     await prisma.$disconnect();
+};
+
+export const userHasJournals = async (username) => {
+    try {
+        const user = await prisma.user.findUnique({
+            where: { username },
+            include: {
+                Bookshelf: {
+                    include: {
+                        journal: true,
+                    },
+                },
+            },
+        });
+
+        if (user && user.Bookshelf && user.Bookshelf.length > 0) {
+            const hasJournals = user.Bookshelf.some(
+                (bookshelf) => bookshelf.journal && bookshelf.journal.length > 0
+            );
+            return hasJournals;
+        }
+
+        return false;
+    } catch (error) {
+        console.error("Failed to fetch user journals:", error);
+        return false;
+    } finally {
+        await prisma.$disconnect();
+    }
 };

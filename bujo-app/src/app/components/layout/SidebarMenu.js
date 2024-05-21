@@ -55,7 +55,7 @@ export default function SidebarMenu({ journals }) {
                                 Create journal
                             </Sidebar.Item>
                             <hr />
-                            {journals.length > 0 ? (
+                            {journals ? (
                                 journals.map((journal, index) => (
                                     <Sidebar.Item
                                         href="#"
@@ -67,9 +67,7 @@ export default function SidebarMenu({ journals }) {
                                     </Sidebar.Item>
                                 ))
                             ) : (
-                                <Sidebar.Item className="itemStyle">
-                                    No journals yet. Create your first journal!
-                                </Sidebar.Item>
+                                <></>
                             )}
                         </Sidebar.Collapse>
                         <Sidebar.Collapse
