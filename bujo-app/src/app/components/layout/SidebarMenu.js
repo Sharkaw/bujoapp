@@ -15,7 +15,6 @@ import { LuStickyNote } from "react-icons/lu";
 import { Sidebar } from "flowbite-react";
 import "./styles.css";
 import { logout } from "@/app/actions";
-import { redirect } from "next/navigation";
 
 export default function SidebarMenu({ journals }) {
     const handleClick = async () => {
@@ -23,8 +22,14 @@ export default function SidebarMenu({ journals }) {
     };
 
     return (
-        <div className="bg-gray-50 h-full border-gray-300 border-solid border-r-8 sidebar">
-            <Sidebar className="md:mt-8 md:ml-4 p-2">
+        <div
+            id="sidebarDiv"
+            className="bg-gray-50 h-full w-full border-slate-300 border-solid border-r-8 sidebar"
+        >
+            <Sidebar
+                id="sidebar"
+                className="md:mt-8 mx-auto lg:ml-4 p-2 hidden md:flex"
+            >
                 <Sidebar.Items className="text-gray-800">
                     <Sidebar.ItemGroup>
                         <Sidebar.Collapse
@@ -32,7 +37,7 @@ export default function SidebarMenu({ journals }) {
                             label="Profile"
                             className="itemStyle"
                         >
-                            <Sidebar.Item href="#" className="itemStyle">
+                            <Sidebar.Item href="/profile" className="itemStyle">
                                 Edit Profile
                             </Sidebar.Item>
                             <Sidebar.Item href="#" className="itemStyle">
@@ -106,9 +111,8 @@ export default function SidebarMenu({ journals }) {
                         </Sidebar.Collapse>
                         <hr />
                         <Sidebar.Item
-                            href="#"
                             icon={FiLogOut}
-                            className="itemStyle"
+                            className="itemStyle cursor-pointer"
                             onClick={handleClick}
                         >
                             Logout
