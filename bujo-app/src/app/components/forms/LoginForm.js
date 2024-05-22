@@ -1,44 +1,60 @@
 "use client";
+import { login } from "@/app/actions";
 import { LongButton } from "@/app/components/common/LongButton";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export default function LoginForm() {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const [data, setData] = useState();
+
+    const processForm = async (data) => {
+        const result = await login(data);
+
+        if (!result) {
+            console.log("Something went wrong");
+            return;
+        }
+
+        if (result.error) {
+            console.log(result.error);
+            return;
+        }
+
+        reset();
+        setData(result.data);
     };
 
     return (
         <form
             className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
-            onSubmit={handleSubmit((data) => {
-                console.log(data);
-            })}
+            onSubmit={handleSubmit(processForm)}
         >
             <div className="mb-4 p-1 border-b">
                 <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="userName"
+                    htmlFor="email"
                 >
-                    Username/email
+                    Email
                 </label>
                 <input
-                    {...register("username", {
-                        required: "Please type username",
+                    {...register("email", {
+                        required: "Please type email",
                     })}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="userName"
+                    id="email"
                     type="text"
-                    placeholder="Username"
+                    placeholder="Email"
                 />
             </div>
             <p className="text-red-700 font-light text-xs mb-2 min-h-4">
-                {errors.userName?.message}
+                {errors.email?.message}
             </p>
             <div className="mb-4 p-1 border-b">
                 <label
