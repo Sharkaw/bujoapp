@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { BaseButton } from '@/app/components/common/BaseButton';
 
 const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
   if (!showModal) return null;
@@ -25,7 +26,13 @@ const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
             ))}
           </div>
           <div className="flex items-center justify-end p-4 border-t">
-            <button type="button" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Save</button>
+            <div className="px-4 py-2 text-white rounded">
+                <BaseButton
+                title="Save"
+                variant="success"
+                type="submit"
+                />
+            </div>
           </div>
         </div>
       </div>

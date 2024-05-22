@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { LongButton } from '@/app/components/common/LongButton';
 import { BaseButton } from '@/app/components/common/BaseButton';
 import profile from '@/assets/profile.png';
-import AvatarModal from '@/app/components/modals/avatarModal';
+import Modal from '@/app/components/modals/avatarModal';
 
 const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false);
