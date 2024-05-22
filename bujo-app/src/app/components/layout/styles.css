@@ -2,7 +2,7 @@
   border-radius: 0 10px 10px 0 / 0 225px 225px 0;
 }
 .itemStyle {
-  @apply text-gray-800 hover:bg-gray-400  focus:bg-gray-400 active:bg-gray-400 text-left;
+    @apply text-gray-800 hover:bg-gray-400  focus:bg-gray-400 active:bg-gray-400 text-left;
 }
 
 .header {
