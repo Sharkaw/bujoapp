@@ -6,6 +6,8 @@ import ShowPasswordStrength from "./ShowPasswordStrength";
 import { passwordStrength } from "check-password-strength";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 // import { redirect } from "next/navigation";
+import { registerUser } from "@/app/actions";
+import { redirect } from "next/dist/server/api-utils";
 
 export default function RegisterForm() {
     const {
@@ -29,7 +31,6 @@ export default function RegisterForm() {
 
     useEffect(() => {
         if (password.current) {
-            console.log(passwordStrength(password.current).id);
             setStrength(passwordStrength(password.current).id);
         }
     }, [password.current]);
@@ -40,24 +41,9 @@ export default function RegisterForm() {
     };
 
     const onSubmit = async (data) => {
-        const response = await fetch("/api/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-            console.log(`User created ${result.id}`);
-            reset();
-            // if (session.isLoggedIn) {
-            //     redirect("/");
-            // } (NOTE) Suvi: Coming up later
-        } else {
-            console.log(result.error);
-        }
+        await registerUser(data);
+        reset();
+        redirect("/");
     };
 
     return (
