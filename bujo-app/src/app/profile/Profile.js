@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { LongButton } from "@/app/components/common/LongButton";
 import profile from "@/assets/profile.png";
 import Modal from "@/app/components/modals/avatarModal";
 import UpdateUserForm from "../components/forms/UpdateUserForm";
+import { useForm } from "react-hook-form";
+
 const ProfilePage = ({ user }) => {
     const [showModal, setShowModal] = useState(false);
     const [selectedPicture, setSelectedPicture] = useState(null);
@@ -33,6 +35,24 @@ const ProfilePage = ({ user }) => {
         toggleModal();
     };
 
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            username: user.username,
+            email: user.email,
+            password: "",
+        },
+    });
+
+    const handleCancel = () => {
+        reset();
+        toggleEditMode();
+    };
+
     return (
         <div className="flex flex-col custom-md:flex-row mb-10 w-full mt-8 m-1 p-1">
             <div className="flex flex-col w-full custom-md:items-end custom-md:w-1/2">
@@ -40,12 +60,18 @@ const ProfilePage = ({ user }) => {
                     <h1 className="text-center custom-md:text-left">
                         Personal info
                     </h1>
-                    <UpdateUserForm user={user} readOnly={!showEditMode} />
+                    <UpdateUserForm
+                        readOnly={!showEditMode}
+                        register={register}
+                        errors={errors}
+                    />
                     <div className="flex flex-col items-center custom-md:items-start">
                         <LongButton
                             title={!showEditMode ? "Edit profile" : "Cancel"}
                             variant="success"
-                            onClick={toggleEditMode}
+                            onClick={
+                                !showEditMode ? toggleEditMode : handleCancel
+                            }
                         />
                     </div>
                 </div>

@@ -1,19 +1,6 @@
 "use client";
-import { useForm } from "react-hook-form";
 
-export default function UpdateUserForm({ user, readOnly }) {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({
-        defaultValues: {
-            username: user.username,
-            email: user.email,
-            password: "",
-        },
-    });
-
+export default function UpdateUserForm({ readOnly, register, errors }) {
     return (
         <form>
             <div className="mb-4 p-1 border-b">
