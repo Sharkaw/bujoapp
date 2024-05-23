@@ -13,7 +13,7 @@ import { TiInputChecked } from "react-icons/ti";
 import { TfiCheckBox } from "react-icons/tfi";
 import { TbCheckbox } from "react-icons/tb";
 
-import { CheckBox } from '../components/to-do-list/CheckBox';
+import { ToDoListItem } from '../components/to-do-list/ToDoListItem';
 
 const ToDoListPage = () => {
   return (
@@ -26,27 +26,31 @@ const ToDoListPage = () => {
           </div> */}
         </div>
         <div className="flex-col w-full md:w-4/5 mt-5">
-          <CheckBox title={"to do"} status={"unchecked"} />
+          <ToDoListItem title={"to do task 1"} status={false} />
+          <ToDoListItem title={"to do task 2"} status={false} />
+          <ToDoListItem title={"to do task 3"} status={true} />
+          <ToDoListItem title={"to do task 4"} status={false} />
+          <ToDoListItem title={"to do task 5"} status={true} />
+          <ToDoListItem title={"to do task 6"} status={false} />
+          <ToDoListItem title={"to do task 7"} status={true} />
+          <ToDoListItem title={"to do task 8"} status={false} />
+          <ToDoListItem title={"to do task 9"} status={false} />
           {/* <div className="flex w-full h-14 justify-between border-b-2 border-gray-300 border-dashed">
             <ImCheckboxUnchecked className="text-gray-800 mt-2 mr-4 ml-3 w-1/12 font-bold text-center text-3xl cursor-pointer"/>
             <p className="text-gray-800 mt-2 w-11/12 font-semibold text-3xl font-kalam">to do</p>
           </div> */}
-          <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
+          {/* <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
             <TiInputCheckedOutline className="text-stone-400 mr-2 text-6xl cursor-pointer"/>
             <p className=" text-stone-400 mt-2 w-11/12 font-semibold text-3xl font-kalam self-center">Done</p>
-          </div>
-          <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
+          </div> */}
+          {/* <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
             <TiInputCheckedOutline className="text-stone-400 mr-2 text-6xl cursor-pointer"/>
             <p className=" text-stone-400 mt-2 w-11/12 font-semibold text-3xl font-kalam self-center">Done</p>
-          </div>
-          <CheckBox title={"to do"} status={"unchecked"} />
-          <CheckBox title={"to do"} status={"unchecked"} />
-          <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
+          </div> */}
+          {/* <div className="flex w-full justify-between border-b-2 border-gray-300 border-dashed">
             <TiInputCheckedOutline className="text-stone-400 mr-2 text-6xl cursor-pointer"/>
             <p className=" text-stone-400 mt-2 w-11/12 font-semibold text-3xl font-kalam self-center">Done</p>
-          </div>
-          <CheckBox title={"to do"} status={"unchecked"} />
-          <CheckBox title={"to do"} status={"unchecked"} />
+          </div> */}
         </div>
         
         {/* <div className="flex flex-wrap md:w-1/4 gap-2 mt-0 md:mt-5 justify-center">
