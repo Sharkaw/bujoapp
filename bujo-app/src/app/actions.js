@@ -8,6 +8,7 @@ import { hashPassword, comparePassword } from "./lib/auth";
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
@@ -49,10 +50,10 @@ export const login = async (formData) => {
         await session.save();
 
         // redirect("/register");
-        return { succes: true, error: "User logger in" };
+        return { success: true, error: "User logger in" };
     } else {
         console.log("User could not bee logged in");
-        return { succes: false, error: "Wrong credentials" };
+        return { success: false, error: "Wrong credentials" };
     }
 };
 export const logout = async () => {
@@ -134,7 +135,7 @@ export const getUserData = async (id) => {
 };
 
 export const UpdateUserData = async (username, formData) => {
-    const session = getSession();
+    const session = await getSession();
 
     try {
         const user = await prisma.user.update({
@@ -142,13 +143,14 @@ export const UpdateUserData = async (username, formData) => {
             data: {
                 username: formData.username,
                 email: formData.email,
-                // password: newPassword,
+                password: formData.password,
             },
         });
 
         await session.save();
+        revalidatePath("/profile");
 
-        return { succes: true, error: "User data updated" };
+        return { success: true, error: "User data updated" };
     } catch (error) {
         console.error("Failed to update user data:", error);
     } finally {
