@@ -4,7 +4,6 @@ const Profile = async () => {
     try {
         const session = await getSession();
         const user = await getUserData(session.user.id);
-        console.log(user);
 
         return <>{session && <ProfilePage user={user} />}</>;
     } catch (error) {
