@@ -1,13 +1,8 @@
 import React from 'react';
-import Image from "next/image";
-import { LongButton } from "@/app/components/common/LongButton";
-import { IconButton } from "@/app/components/common/IconButton";
 import { BaseButton } from "@/app/components/common/BaseButton";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import "./notes.css";
-
-// import profile from "@/assets/profile.png";
 
 const NotesPage = () => {
   return (
@@ -16,7 +11,7 @@ const NotesPage = () => {
         <div className="flex flex-row justify-between">
           <h1 className="text-gray-800 mb-5">Notes</h1>
           <div className=" ml-10">
-            <BaseButton title="Create new" variant="success" type="submit" />
+            <BaseButton title="Create new" variant="primary" type="submit" />
           </div>
         </div>
         <div className="notes flex-col w-full border-4 border-slate-300 mt-5">
@@ -24,9 +19,8 @@ const NotesPage = () => {
             <p className="text-gray-800 mt-2 ml-4 font-semibold text-center">Note title</p>
             <p className="text-gray-800 mt-2 font-semibold text-sm text-center">01.05.2024</p>
             <div className="flex">
-              <FiEdit3 className="h-8 w-8 mr-5 cursor-pointer"/>
-              <RiDeleteBin6Line className="h-8 w-8 mr-10 cursor-pointer" />
-              
+              <FiEdit3 className="h-6 w-6 mr-5 cursor-pointer"/>
+              <RiDeleteBin6Line className="h-6 w-6 mr-10 cursor-pointer" />
             </div>
           </div>
           <p className="text-gray-800 mb-5 mx-6">
@@ -38,9 +32,8 @@ const NotesPage = () => {
             <p className="text-gray-800 mt-2 ml-4 font-semibold text-center">Note title</p>
             <p className="text-gray-800 mt-2 font-semibold text-sm text-center">01.05.2024</p>
             <div className="flex">
-              <FiEdit3 className="h-8 w-8 mr-5 cursor-pointer"/>
-              <RiDeleteBin6Line className="h-8 w-8 mr-10 cursor-pointer" />
-              
+              <FiEdit3 className="h-6 w-6 mr-5 cursor-pointer"/>
+              <RiDeleteBin6Line className="h-6 w-6 mr-10 cursor-pointer" />
             </div>
           </div>
           <p className="text-gray-800 mb-5 mx-6">
@@ -52,9 +45,8 @@ const NotesPage = () => {
             <p className="text-gray-800 mt-2 ml-4 font-semibold text-center">Note title</p>
             <p className="text-gray-800 mt-2 font-semibold text-sm text-center">01.05.2024</p>
             <div className="flex">
-              <FiEdit3 className="h-8 w-8 mr-5 cursor-pointer"/>
-              <RiDeleteBin6Line className="h-8 w-8 mr-10 cursor-pointer" />
-              
+              <FiEdit3 className="h-6 w-6 mr-5 cursor-pointer"/>
+              <RiDeleteBin6Line className="h-6 w-6 mr-10 cursor-pointer" />
             </div>
           </div>
           <p className="text-gray-800 mb-5 mx-6">
@@ -62,7 +54,6 @@ const NotesPage = () => {
           </p>
         </div>
       </div>
-      
     </div>
   );  
 };
