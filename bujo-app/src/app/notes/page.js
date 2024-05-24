@@ -14,7 +14,7 @@ const NotesPage = () => {
             <BaseButton title="Create new" variant="primary" type="submit" />
           </div>
         </div>
-        <div className="notes flex-col w-full border-4 border-slate-300 mt-5">
+        <div className="notes flex-col w-full border-4 border-gray-800 mt-5">
           <div className="flex w-full py-3 justify-between">
             <p className="text-gray-800 mt-2 ml-4 font-semibold text-center">Note title</p>
             <p className="text-gray-800 mt-2 font-semibold text-sm text-center">01.05.2024</p>
@@ -27,7 +27,7 @@ const NotesPage = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, consequatur? Veritatis, repellendus id molestiae deserunt fugit, explicabo exercitationem magni libero veniam vero voluptatum? Aperiam inventore officiis iure culpa ipsum exercitationem earum consequatur expedita architecto perspiciatis asperiores rerum optio ratione at doloremque cumque deserunt magnam, sed obcaecati? Officiis iste et sunt quasi nesciunt eveniet qui ex labore eum unde reiciendis veniam consectetur praesentium necessitatibus dolorum tempora laboriosam id, modi molestiae, placeat enim similique corporis. Incidunt illo facere accusantium quod! Hic delectus voluptas provident maiores minima illum omnis doloremque, assumenda similique soluta minus, rem repellendus temporibus nemo doloribus blanditiis officia eveniet debitis!
           </p>
         </div>
-        <div className="notes flex-col w-full border-4 border-slate-300 mt-10">
+        <div className="notes flex-col w-full border-4 border-gray-800 mt-10">
           <div className="flex w-full py-3 justify-between">
             <p className="text-gray-800 mt-2 ml-4 font-semibold text-center">Note title</p>
             <p className="text-gray-800 mt-2 font-semibold text-sm text-center">01.05.2024</p>
@@ -40,7 +40,7 @@ const NotesPage = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, consequatur? Veritatis, repellendus id molestiae deserunt fugit, explicabo exercitationem magni libero veniam vero voluptatum? Aperiam inventore officiis iure culpa ipsum exercitationem earum consequatur expedita architecto perspiciatis asperiores rerum optio ratione at doloremque cumque deserunt magnam, sed obcaecati? Officiis iste et sunt quasi nesciunt eveniet qui ex labore eum unde reiciendis veniam consectetur praesentium necessitatibus dolorum tempora laboriosam id, modi molestiae, placeat enim similique corporis. Incidunt illo facere accusantium quod! Hic delectus voluptas provident maiores minima illum omnis doloremque, assumenda similique soluta minus, rem repellendus temporibus nemo doloribus blanditiis officia eveniet debitis!
           </p>
         </div>
-        <div className="notes flex-col w-full border-4 border-slate-300 mt-10">
+        <div className="notes flex-col w-full border-4 border-gray-800 mt-10">
           <div className="flex w-full py-3 justify-between">
             <p className="text-gray-800 mt-2 ml-4 font-semibold text-center">Note title</p>
             <p className="text-gray-800 mt-2 font-semibold text-sm text-center">01.05.2024</p>
