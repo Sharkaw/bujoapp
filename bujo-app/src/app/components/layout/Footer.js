@@ -10,7 +10,10 @@ export default function Footer() {
         <footer className="bg-gray-800 p-5 md:pt-12 text-white">
             <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/5 flex justify-center">
-                    <Link href="/"><h1>BuJo</h1></Link>
+                    <Link href="/">
+                        {/* <h1>BuJo</h1> */}
+                        <span className="text-5xl font-kalam text-white p-2 ml-2 md:ml-0 mb-5 md:mb-0 block">BuJo</span>
+                    </Link>
                 </div>
                 <div className="flex justify-center w-full md:w-3/5 max-w-[900px] pb-5">
                     <nav className="">

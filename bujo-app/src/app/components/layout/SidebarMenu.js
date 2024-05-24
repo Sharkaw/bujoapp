@@ -48,7 +48,7 @@ export default function SidebarMenu({ journals }) {
                                     label="Bookshelf"
                                     className="itemStyle"
                                 >
-                                    
+{/*                                     
                                     <Sidebar.Item
                                         href="/bookshelf"
                                         icon={PiBooks}
@@ -56,7 +56,7 @@ export default function SidebarMenu({ journals }) {
                                     >
                                         All Journals
                                     </Sidebar.Item>
-                                    <hr />
+                                    <hr /> */}
                                     <Sidebar.Item
                                         href="#"
                                         icon={FiEdit2}
@@ -65,14 +65,14 @@ export default function SidebarMenu({ journals }) {
                                         Create journal
                                     </Sidebar.Item>
                                     <hr />
-                                    <Sidebar.Item
+                                    {/* <Sidebar.Item
                                         href="/journal-title"
                                         icon={FiBookOpen}
                                         className="itemStyle"
                                     >
                                         Demo Journal
-                                    </Sidebar.Item>
-                                    {/* {journals.map((journal, index) => (
+                                    </Sidebar.Item> */}
+                                    {journals.map((journal, index) => (
                                         <Sidebar.Item
                                             href="#"
                                             icon={FiBookOpen}
@@ -81,7 +81,7 @@ export default function SidebarMenu({ journals }) {
                                         >
                                             {journal.title}
                                         </Sidebar.Item>
-                                    ))} */}
+                                    ))}
                                 </Sidebar.Collapse>
                                 <Sidebar.Collapse
                                     icon={FiPlusCircle}
