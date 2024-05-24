@@ -120,10 +120,10 @@ export const userHasJournals = async (username) => {
     }
 };
 
-export const getUserData = async (username) => {
+export const getUserData = async (id) => {
     try {
         const user = await prisma.user.findUnique({
-            where: { username: username },
+            where: { id: id },
         });
         return user;
     } catch (error) {
