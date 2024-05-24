@@ -5,9 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import ShowPasswordStrength from "./ShowPasswordStrength";
 import { passwordStrength } from "check-password-strength";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { registerUser } from "@/app/actions";
-import { redirect } from "next/dist/server/api-utils";
 
 export default function RegisterForm() {
     const {

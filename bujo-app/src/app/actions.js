@@ -119,3 +119,16 @@ export const userHasJournals = async (username) => {
         await prisma.$disconnect();
     }
 };
+
+export const getUserData = async (username) => {
+    try {
+        const user = await prisma.user.findUnique({
+            where: { username: username },
+        });
+        return user;
+    } catch (error) {
+        console.error("Failed to fetch user data:", error);
+    } finally {
+        await prisma.$disconnect();
+    }
+};
