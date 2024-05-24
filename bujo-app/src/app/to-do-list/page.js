@@ -10,7 +10,7 @@ import "./style.css";
 
 const ToDoListPage = () => {
   return (
-    <div className="flex flex-col md:flex-row w-full max-w-[800px] mb-10 mx-5 md:mx-10">
+    <div className="flex flex-col md:flex-row w-full max-w-[700px] mb-10 mx-5 md:mx-10">
       <div className="flex flex-col mt-5 w-full">
         <div className="flex flex-row justify-between">
           <h1 className="text-gray-800">To Do List</h1>
