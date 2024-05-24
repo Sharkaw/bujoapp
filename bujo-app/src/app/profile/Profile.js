@@ -64,27 +64,30 @@ const ProfilePage = ({ user }) => {
         } else {
             updates.email = user.email;
         }
-
         if (data.username) {
             updates.username = data.username;
         } else {
             updates.username = user.username;
         }
+        if (data.password) {
+            updates.password = data.password;
+        } else {
+            updates.password = user.password;
+        }
 
         const result = await UpdateUserData(user.username, updates);
 
-        if (!result) {
+        if (!result || !result.success) {
             console.log("Something went wrong");
-            return;
-        }
-
-        if (result.error) {
-            console.log(result.error);
+            if (result && result.error) {
+                console.log(result.error);
+            }
             return;
         }
 
         reset();
         setData(result.data);
+        revalidatePath("/profile");
     };
 
     return (
