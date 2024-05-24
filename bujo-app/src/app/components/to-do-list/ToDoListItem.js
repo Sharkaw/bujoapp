@@ -1,9 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ImCheckboxUnchecked } from "react-icons/im";
-import { TiInputCheckedOutline } from "react-icons/ti";
+// import { ImCheckboxUnchecked } from "react-icons/im";
+// import { TiInputCheckedOutline } from "react-icons/ti";
+// import { RiCheckboxBlankLine } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
+
+import { TbCheckbox } from "react-icons/tb";
+import { RiCheckboxBlankLine } from "react-icons/ri";
 
 export function ToDoListItem(props) {
 
@@ -31,8 +35,8 @@ function deleteItem(event) {
     }
 
     return (
-        <div className= { status ? checkdivStyle : unCheckdivStyle }> 
-            { status ? <TiInputCheckedOutline className="text-stone-400 ml-1 mr-[6px] w-16 h-16 cursor-pointer self-center" onClick={handleCheckBox}/> : <ImCheckboxUnchecked className="text-gray-800 self-center mx-4 font-bold w-10 h-10 cursor-pointer" onClick={handleCheckBox}/> }
+        <div className= { status ? checkdivStyle : unCheckdivStyle }>
+            { status ? <TbCheckbox className="text-stone-400 mx-4 font-bold w-10 h-10 cursor-pointer self-center" onClick={handleCheckBox}/> : <RiCheckboxBlankLine className="text-gray-800 self-center mx-4 font-bold w-10 h-10 cursor-pointer" onClick={handleCheckBox}/> }
             <input className= { status ? checkInputStyle     : unCheckInputStyle } id="userName" type="text" placeholder="new to do" name="to-do-item" value={title} onChange={updateTitle}></input>
             <RiDeleteBin6Line onClick={deleteItem} className="text-gray-800 self-center mx-4 font-bold w-6 h-6 cursor-pointer"/>
         </div>
