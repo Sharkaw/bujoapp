@@ -51,7 +51,7 @@ export default function UpdateUserForm({ readOnly, register, errors }) {
                 </label>
                 <input
                     {...register("password", {
-                        required: "Please type password",
+                        // required: "Please type password",
                     })}
                     className=" appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="password"

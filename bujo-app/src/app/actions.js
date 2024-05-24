@@ -132,3 +132,28 @@ export const getUserData = async (username) => {
         await prisma.$disconnect();
     }
 };
+
+export const UpdateUserData = async (username, formData) => {
+    const session = getSession();
+    console.log(formData);
+
+    try {
+        const user = await prisma.user.update({
+            where: { username: username },
+            data: {
+                username: formData.username,
+                email: formData.email,
+                // password: newPassword,
+            },
+        });
+        console.log(user);
+
+        await session.save();
+
+        return { succes: true, error: "User data updated" };
+    } catch (error) {
+        console.error("Failed to update user data:", error);
+    } finally {
+        await prisma.$disconnect();
+    }
+};

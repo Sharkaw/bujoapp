@@ -7,8 +7,10 @@ import profile from "@/assets/profile.png";
 import Modal from "@/app/components/modals/avatarModal";
 import UpdateUserForm from "../components/forms/UpdateUserForm";
 import { useForm } from "react-hook-form";
+import { UpdateUserData } from "../actions";
 
 const ProfilePage = ({ user }) => {
+    console.log(user);
     const [showModal, setShowModal] = useState(false);
     const [selectedPicture, setSelectedPicture] = useState(null);
     const [pictureDimensions, setPictureDimensions] = useState({
@@ -53,6 +55,39 @@ const ProfilePage = ({ user }) => {
         toggleEditMode();
     };
 
+    const [data, setData] = useState();
+
+    const processUpdate = async (data) => {
+        const updates = {};
+
+        if (data.email) {
+            updates.email = data.email;
+        } else {
+            updates.email = user.email;
+        }
+
+        if (data.username) {
+            updates.username = data.username;
+        } else {
+            updates.username = user.username;
+        }
+
+        const result = await UpdateUserData(user.username, updates);
+
+        if (!result) {
+            console.log("Something went wrong");
+            return;
+        }
+
+        if (result.error) {
+            console.log(result.error);
+            return;
+        }
+
+        reset();
+        setData(result.data);
+    };
+
     return (
         <div className="flex flex-col custom-md:flex-row mb-10 w-full mt-8 m-1 p-1">
             <div className="flex flex-col w-full custom-md:items-end custom-md:w-1/2">
@@ -91,6 +126,7 @@ const ProfilePage = ({ user }) => {
                         title="Save profile"
                         variant="success"
                         type="submit"
+                        onClick={handleSubmit(processUpdate)}
                     />
                     <LongButton
                         title="Delete profile"
