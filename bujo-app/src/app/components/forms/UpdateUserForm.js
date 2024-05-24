@@ -11,9 +11,7 @@ export default function UpdateUserForm({ readOnly, register, errors }) {
                     Username
                 </label>
                 <input
-                    {...register("username", {
-                        required: "Please type username",
-                    })}
+                    {...register("username")}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="username"
                     type="text"
@@ -29,9 +27,7 @@ export default function UpdateUserForm({ readOnly, register, errors }) {
                     Email
                 </label>
                 <input
-                    {...register("email", {
-                        required: "Please type email",
-                    })}
+                    {...register("email")}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="email"
                     type="text"
@@ -50,9 +46,7 @@ export default function UpdateUserForm({ readOnly, register, errors }) {
                     Password
                 </label>
                 <input
-                    {...register("password", {
-                        // required: "Please type password",
-                    })}
+                    {...register("password")}
                     className=" appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="password"
                     type="password"

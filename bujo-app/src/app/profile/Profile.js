@@ -10,7 +10,6 @@ import { useForm } from "react-hook-form";
 import { UpdateUserData } from "../actions";
 
 const ProfilePage = ({ user }) => {
-    console.log(user);
     const [showModal, setShowModal] = useState(false);
     const [selectedPicture, setSelectedPicture] = useState(null);
     const [pictureDimensions, setPictureDimensions] = useState({
