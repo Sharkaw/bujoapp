@@ -91,10 +91,10 @@ export const registerUser = async (formData) => {
     await prisma.$disconnect();
 };
 
-export const userHasJournals = async (username) => {
+export const userHasJournals = async (id) => {
     try {
         const user = await prisma.user.findUnique({
-            where: { username },
+            where: { id },
             include: {
                 Bookshelf: {
                     include: {
@@ -135,7 +135,6 @@ export const getUserData = async (id) => {
 
 export const UpdateUserData = async (username, formData) => {
     const session = getSession();
-    console.log(formData);
 
     try {
         const user = await prisma.user.update({
@@ -146,7 +145,6 @@ export const UpdateUserData = async (username, formData) => {
                 // password: newPassword,
             },
         });
-        console.log(user);
 
         await session.save();
 
