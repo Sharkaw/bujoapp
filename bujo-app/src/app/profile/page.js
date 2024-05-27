@@ -1,6 +1,6 @@
 import { getSession, getUserData } from "../actions";
 import ProfilePage from "./Profile";
-const Profile = async () => {
+export default async function Profile() {
     try {
         const session = await getSession();
         const user = await getUserData(session.user.id);
@@ -9,6 +9,4 @@ const Profile = async () => {
     } catch (error) {
         console.error("Could not get profile", error);
     }
-};
-
-export default Profile;
+}
