@@ -1,0 +1,4 @@
+.list {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  /* @apply bg-zinc-600 text-white hover:bg-gray-300  border-gray-800; */
+}

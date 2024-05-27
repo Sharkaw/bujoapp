@@ -24,11 +24,11 @@ export default function SidebarMenu({ journals }) {
     return (
         <div
             id="sidebarDiv"
-            className="bg-gray-50 h-full w-full border-slate-300 border-solid border-r-8 sidebar"
+            className="bg-gray-50 h-full w-full border-slate-300 border-solid border-r-4 sidebar md:border-b-0"
         >
             <Sidebar
                 id="sidebar"
-                className="md:mt-8 mx-auto lg:ml-4 p-2 hidden md:flex"
+                className="md:mt-8 mx-auto p-2 hidden md:flex"
             >
                 <Sidebar.Items className="text-gray-800">
                     <Sidebar.ItemGroup>
