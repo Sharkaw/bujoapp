@@ -1,14 +1,14 @@
 .sidebar {
-  border-radius: 0 10px 10px 0 / 0 225px 225px 0;
+    border-radius: 0 10px 10px 0 / 0 225px 225px 0;
 }
 .itemStyle {
-  @apply text-gray-800 hover:bg-gray-400  focus:bg-gray-400 active:bg-gray-400 text-left w-64;
+    @apply text-gray-800 hover:bg-gray-400  focus:bg-gray-400 active:bg-gray-400 text-left w-64;
 }
 
 .header {
-  border-radius: 255px 0px 225px 2px/0px 225px 15px 225px;
+    border-radius: 255px 0px 225px 2px/0px 225px 15px 225px;
 }
 
 .next-error-h1 {
-  border-color: #1f2937 !important;
+    border-color: #1f2937 !important;
 }
