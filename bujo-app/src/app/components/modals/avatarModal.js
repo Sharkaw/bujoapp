@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { BaseButton } from '@/app/components/common/BaseButton';
 
 const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
+  const [tempSelectedPicture, setTempSelectedPicture] = useState(null);
+
   if (!showModal) return null;
+
+  const handlePictureClick = (picture) => {
+    setTempSelectedPicture(picture);
+  };
+
+  const handleSave = () => {
+    if (tempSelectedPicture) {
+      handlePictureSelect(tempSelectedPicture);
+    }
+    toggleModal();
+  };
 
   return (
     <div id="default-modal" tabIndex="-1" aria-hidden="true" className="fixed inset-0 z-50 overflow-y-auto">
@@ -20,18 +33,23 @@ const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
           </div>
           <div className="grid grid-cols-3 gap-4 p-4">
             {[1, 2, 3, 4, 5, 6].map((num) => (
-              <div key={num} className="relative cursor-pointer" onClick={() => handlePictureSelect(`/profileimages/${num}.png`)}>
+              <div
+                key={num}
+                className={`relative cursor-pointer rounded-lg ${tempSelectedPicture === `/profileimages/${num}.png` ? 'ring-2 ring-gray-300 rounded-lg' : ''}`}
+                onClick={() => handlePictureClick(`/profileimages/${num}.png`)}
+              >
                 <Image src={`/profileimages/${num}.png`} alt={`Picture ${num}`} className="rounded-lg" width={100} height={100} />
               </div>
             ))}
           </div>
           <div className="flex items-center justify-end p-4 border-t">
             <div className="px-4 py-2 text-white rounded">
-                <BaseButton
+              <BaseButton
                 title="Save"
                 variant="success"
-                type="submit"
-                />
+                type="button"
+                onClick={handleSave}
+              />
             </div>
           </div>
         </div>

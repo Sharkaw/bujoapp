@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 
 const ProfilePage = ({ user }) => {
     const [showModal, setShowModal] = useState(false);
-    const [selectedPicture, setSelectedPicture] = useState(null);
+    const [selectedPicture, setSelectedPicture] = useState(profile.src);
     const [pictureDimensions, setPictureDimensions] = useState({
         width: 100,
         height: 100,
@@ -19,7 +19,7 @@ const ProfilePage = ({ user }) => {
 
     useEffect(() => {
         if (selectedPicture) {
-            const img = new Image();
+            const img = new window.Image();
             img.src = selectedPicture;
             img.onload = () => {
                 setPictureDimensions({ width: img.width, height: img.height });
@@ -78,7 +78,13 @@ const ProfilePage = ({ user }) => {
             </div>
             <div className="w-full custom-md:w-1/2 flex flex-col items-center justify-center custom-md:justify-start pr-3 mt-4 px-5">
                 <div className="max-w-40 mx-auto">
-                    <Image src={profile} alt="user" className="rounded-full" />
+                    <Image 
+                        src={selectedPicture} 
+                        alt="user" 
+                        className="rounded-full" 
+                        width={100} 
+                        height={100} 
+                    />
                 </div>
                 <p className="my-5 text-center font-bold">{user.username}</p>
                 <div className="flex flex-col items-center custom-md:items-start space-y-3">
