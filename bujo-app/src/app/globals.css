@@ -23,12 +23,6 @@
 body {
     font-family: "Inter", sans-serif;
     color: rgb(var(--foreground-rgb));
-    /* background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-        )
-        rgb(var(--background-start-rgb)); */
 }
 
 @layer utilities {
@@ -39,7 +33,7 @@ body {
 
 @layer base {
     h1 {
-        @apply text-5xl font-kalam mb-5 p-2 text-gray-800;
+        @apply font-kalam mb-5 p-2 text-gray-800;
     }
     p {
         @apply font-inter text-gray-800;
