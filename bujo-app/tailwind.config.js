@@ -8,15 +8,18 @@ module.exports = {
         flowbite.content(),
     ],
     theme: {
+        backgroundImage: {
+            "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            "gradient-conic":
+                "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        },
+        fontFamily: {
+            kalam: [' "Kalam" ', "sans-serif"],
+            inter: [' "Inter" ', "sans-serif"],
+        },
         extend: {
-            backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic":
-                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-            },
-            fontFamily: {
-                kalam: [' "Kalam" ', "sans-serif"],
-                inter: [' "Inter" ', "sans-serif"],
+            screens: {
+                "custom-md": "800px",
             },
             screens: {
                 "custom-md": "800px",

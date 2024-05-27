@@ -12,7 +12,7 @@ const LayoutGrid = ({ children }) => {
                     <Header />
                 </div>
                 <div className="flex flex-col md:flex-row flex-1">
-                    <div className="min-w-60 flex">
+                    <div className="min-w-64 flex">
                         <Sidebar />
                     </div>
                     <main className="flex-auto flex justify-center">
