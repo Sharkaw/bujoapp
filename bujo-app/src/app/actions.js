@@ -4,7 +4,6 @@ import { getIronSession } from "iron-session";
 import { defaultSession, sessionOptions } from "./lib/lib";
 import { cookies } from "next/headers";
 import { hashPassword, comparePassword } from "./lib/auth";
-// import { prisma } from "@/app/lib/prisma";
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
@@ -33,6 +32,7 @@ export const login = async (formData) => {
             username: true,
             email: true,
             password: true,
+            picture: true,
         },
     });
 
@@ -49,7 +49,6 @@ export const login = async (formData) => {
 
         await session.save();
 
-        // redirect("/register");
         return { success: true, error: "User logger in" };
     } else {
         console.log("User could not bee logged in");
@@ -78,26 +77,36 @@ export const registerUser = async (formData) => {
     }
 
     const hashedPassword = await hashPassword(password);
+    const defaultPicture = "/profileimages/7.png";
 
     const user = await prisma.user.create({
         data: {
             password: hashedPassword,
             email,
             username,
+            picture: defaultPicture,
         },
     });
 
-    session.user = { id: user.id, email: user.email, username: user.username };
+    session.user = {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        picture: user.picture,
+    };
     await session.save();
     await prisma.$disconnect();
 };
 
-export const userHasJournals = async (id) => {
+export const userHasJournals = async (userId) => {
     try {
         const user = await prisma.user.findUnique({
-            where: { id },
+            where: {
+                id: userId,
+            },
             include: {
                 Bookshelf: {
+                    take: 1,
                     include: {
                         journal: true,
                     },
@@ -105,19 +114,14 @@ export const userHasJournals = async (id) => {
             },
         });
 
-        if (user && user.Bookshelf && user.Bookshelf.length > 0) {
-            const hasJournals = user.Bookshelf.some(
-                (bookshelf) => bookshelf.journal && bookshelf.journal.length > 0
-            );
-            return hasJournals;
+        if (!user || !user.Bookshelf.length) {
+            return null;
         }
 
-        return false;
+        return user.Bookshelf.journal;
     } catch (error) {
-        console.error("Failed to fetch user journals:", error);
-        return false;
-    } finally {
-        await prisma.$disconnect();
+        console.error(error);
+        return null;
     }
 };
 
@@ -144,6 +148,7 @@ export const UpdateUserData = async (username, formData) => {
                 username: formData.username,
                 email: formData.email,
                 password: formData.password,
+                picture: formData.picture,
             },
         });
 

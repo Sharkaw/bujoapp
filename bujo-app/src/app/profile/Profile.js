@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { LongButton } from "@/app/components/common/LongButton";
-import profile from "@/assets/profile.png";
 import Modal from "@/app/components/modals/avatarModal";
 import UpdateUserForm from "../components/forms/UpdateUserForm";
 import { useForm } from "react-hook-form";
@@ -11,7 +10,7 @@ import { UpdateUserData } from "../actions";
 
 const ProfilePage = ({ user }) => {
     const [showModal, setShowModal] = useState(false);
-    const [selectedPicture, setSelectedPicture] = useState(profile.src);
+    const [selectedPicture, setSelectedPicture] = useState(user.picture);
     const [pictureDimensions, setPictureDimensions] = useState({
         width: 100,
         height: 100,
@@ -28,26 +27,30 @@ const ProfilePage = ({ user }) => {
         }
     }, [selectedPicture]);
 
-    const toggleModal = () => setShowModal(!showModal);
-    const toggleEditMode = () => setShowEditMode(!showEditMode);
-
-    const handlePictureSelect = (picture) => {
-        setSelectedPicture(picture);
-        toggleModal();
-    };
-
     const {
         register,
         handleSubmit,
         reset,
+        setValue,
+        watch,
         formState: { errors },
     } = useForm({
         defaultValues: {
             username: user.username,
             email: user.email,
             password: "",
+            profilePicture: user.picture,
         },
     });
+
+    const toggleModal = () => setShowModal(!showModal);
+    const toggleEditMode = () => setShowEditMode(!showEditMode);
+
+    const handlePictureSelect = (picture) => {
+        setSelectedPicture(picture);
+        setValue("profilePicture", picture);
+        toggleModal();
+    };
 
     const handleCancel = () => {
         reset();
@@ -57,23 +60,12 @@ const ProfilePage = ({ user }) => {
     const [data, setData] = useState();
 
     const processUpdate = async (data) => {
-        const updates = {};
-
-        if (data.email) {
-            updates.email = data.email;
-        } else {
-            updates.email = user.email;
-        }
-        if (data.username) {
-            updates.username = data.username;
-        } else {
-            updates.username = user.username;
-        }
-        if (data.password) {
-            updates.password = data.password;
-        } else {
-            updates.password = user.password;
-        }
+        const updates = {
+            email: data.email || user.email,
+            username: data.username || user.username,
+            password: data.password || user.password,
+            picture: data.profilePicture || user.picture,
+        };
 
         const result = await UpdateUserData(user.username, updates);
 
@@ -87,7 +79,7 @@ const ProfilePage = ({ user }) => {
 
         reset();
         setData(result.data);
-        revalidatePath("/profile");
+        // revalidatePath("/profile");
     };
 
     return (
@@ -115,14 +107,19 @@ const ProfilePage = ({ user }) => {
             </div>
             <div className="w-full md:w-1/2 flex flex-col items-center  md:justify-start pr-3 mt-4 px-5">
                 <div className="max-w-40 mx-auto">
-                    <Image 
-                        src={selectedPicture} 
-                        alt="user" 
-                        className="rounded-full" 
-                        width={100} 
-                        height={100} 
+                    <Image
+                        src={selectedPicture}
+                        alt="user"
+                        className="rounded-full"
+                        width={100}
+                        height={100}
                     />
                 </div>
+                <input
+                    type="hidden"
+                    id="profilePicture"
+                    {...register("profilePicture", { required: true })}
+                />
                 <p className="my-5 text-center font-bold">{user.username}</p>
                 <div className="flex flex-col items-center md:items-start space-y-3">
                     <LongButton
