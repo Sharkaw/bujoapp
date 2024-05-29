@@ -38,11 +38,13 @@ export const login = async (formData) => {
     const match = await comparePassword(formData.password, user.password);
 
     if (match) {
+        // const userBookshelf = await createBookshelf(user.id);
         session.user = {
             id: user.id,
             email: user.email,
             username: user.username,
             journals: ["yksiö", "kaksio"], 
+            // bookshelf: userBookshelf,
         };
 
         session.isLoggedIn = true;
@@ -86,8 +88,14 @@ export const registerUser = async (formData) => {
             username,
         },
     });
-
-    session.user = { id: user.id, email: user.email, username: user.username};
+    const userBookshelf = await createBookshelf(user.id);
+    // if (userBookshelf != null) {
+    //     console.log("onnistui");
+    //     console.log(userBookshelf);
+    // } else {
+    //     console.log("jotain meni pieleen");
+    // }
+    session.user = { id: user.id, email: user.email, username: user.username, bookshelf: userBookshelf};
     await session.save();
     await prisma.$disconnect();
 };
