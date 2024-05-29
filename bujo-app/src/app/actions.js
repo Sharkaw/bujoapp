@@ -121,65 +121,43 @@ export const userHasJournals = async (userId) => {
 export const getToDoListItems = async (userId, toDoListID) => {
     try {        
         const bookshelf = await prisma.bookshelf.findMany({
-            where: {
-                userId: userId,
-            },
-            include: {
+            select: {
+                id: true,
+                title: true,
                 journal: {
-                    include: {
+                    select: {
+                        id: true,
+                        title: true,
                         To_do_lists_collection: {
-                            where: {
-                                id: "333",
+                            select: {
+                                id: true,
+                                title: true,
+                                To_do_list_item : true,
                             },
                         },
                     },
                 },
-            }
+            },
+            where: {
+                userId: userId,
+            },
+            // include: {
+            //     journal: {
+            //         include: {
+            //             To_do_lists_collection: {
+            //                 where: {
+            //                     id: "333",
+            //                 },
+            //             },
+            //         },
+            //     },
+            // }
         });
         console.log("bookshelf");
         console.log(bookshelf);
+        console.log(bookshelf[0].journal);
         console.log(bookshelf[0].journal.To_do_lists_collection);
-        // console.log(bookshelf.journal.todolist);
-        const user = await prisma.user.findUnique({
-            where: {
-                id: userId,
-            },
-            include: {
-                Bookshelf: {
-                    include: {
-                        journal: {
-                            include: {
-                                To_do_lists_collection: {
-                                    include: {
-                                        To_do_list_item: {
-                                            // where: {
-                                            //     id: "333",
-                                            // },
-                                            include: {
-                                                // To_do_list_item: true,
-                                                To_do_list_item: {
-                                                    where: {
-                                                        to_do_lists_collectionId: "333",
-                                                    },
-                                                },
-                                            },
-                                        },
-                                    },
-                                },
-                            }
-                        },
-                    },
-                },
-            },
-        });
-
-        console.log("user");
-        console.log(user);
-        console.log("journal");
-        console.log(user.Bookshelf[0].journal);
-        console.log("muuta");
-        // console.log(user.Bookshelf[0].journal.To_do_lists_collection);
-        // console.log(user.Bookshelf[0].journal[0].to_do_list_collection);
+        // console.log(bookshelf[0].journal.To_do_lists_collection);
         
 
         // return false;

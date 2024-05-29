@@ -1,0 +1,13 @@
+// palauttaa tietyn to do listan
+const bookshelf = await prisma.to_do_lists_collection.findMany({
+    where: {
+        journalId: "222"
+    }
+});
+
+// palauttaa tietyn tietyn to do listan itemit
+const bookshelf = await prisma.to_do_list_item.findMany({
+    where: {
+        to_do_lists_collectionId: "333"
+    }
+});
