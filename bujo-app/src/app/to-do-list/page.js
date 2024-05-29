@@ -1,4 +1,5 @@
 import React from 'react';
+import { getSession, getToDoListItems, createBookshelf } from "@/app/actions";
 import { ToDoListItem } from '../components/to-do-list/ToDoListItem';
 import { AddListItemButton } from '../components/to-do-list/AddListItemButton';
 import { BaseButton } from "@/app/components/common/BaseButton";
@@ -8,7 +9,26 @@ import { RiCheckboxBlankLine } from "react-icons/ri";
 
 import "./style.css";
 
+async function test() {
+  // const hasJournals = await userHasJournals(session.user.username);
+  // const hasToDoItems = await getToDoListItems(session.user.username);
+  const session = await getSession();
+  console.log(session.user.id);
+  console.log("heip");
+  console.log(session.user.journals);
+  // await getToDoListItems("seppo", "333");
+  // await getToDoListItems(session.user.id, "333");
+  const userBookshelf = await createBookshelf(session.user.id);
+  if (userBookshelf != null) {
+    console.log("onnistui");
+    console.log(userBookshelf);
+  } else {
+    console.log("jotain meni pieleen");
+  }
+}
+
 const ToDoListPage = () => {
+  test();
   return (
     <div className="flex flex-col md:flex-row w-full max-w-[700px] mb-10 mx-5 md:mx-10">
       <div className="flex flex-col mt-5 w-full">

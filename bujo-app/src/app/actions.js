@@ -42,6 +42,7 @@ export const login = async (formData) => {
             id: user.id,
             email: user.email,
             username: user.username,
+            journals: ["yksiö", "kaksio"], 
         };
 
         session.isLoggedIn = true;
@@ -86,10 +87,41 @@ export const registerUser = async (formData) => {
         },
     });
 
-    session.user = { id: user.id, email: user.email, username: user.username };
+    session.user = { id: user.id, email: user.email, username: user.username};
     await session.save();
     await prisma.$disconnect();
 };
+
+export const createBookshelf = async (userId) => {
+    const session = await getSession();
+    try {
+        const bookshelf = await prisma.bookshelf.create({
+            data: {
+                title: "Bookshelf",
+                userId: userId,
+                description: "User Bookshelf"
+            },
+        });
+        // if (!user || !user.Bookshelf || user.Bookshelf[0].journal.length === 0) {
+        //     return null; //tai false?
+        // }
+        session.user = {
+            bookshelf: bookshelf.id, 
+        };
+
+        await session.save();
+
+        // console.log(bookshelf.id);
+        return bookshelf.id;
+        // return user.Bookshelf[0].journal;
+    } catch (error) {
+        console.error("Error: ", error);
+        return null;
+    } finally {
+        await prisma.$disconnect();
+    }
+};
+
 
 export const userHasJournals = async (username) => {
     try {
