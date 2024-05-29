@@ -91,10 +91,12 @@ export const registerUser = async (formData) => {
     await prisma.$disconnect();
 };
 
-export const userHasJournals = async (username) => {
+export const userHasJournals = async (userId) => {
     try {
         const user = await prisma.user.findUnique({
-            where: { username },
+            where: {
+                id: userId,
+            },
             include: {
                 Bookshelf: {
                     include: {
@@ -103,15 +105,84 @@ export const userHasJournals = async (username) => {
                 },
             },
         });
-
-        if (user && user.Bookshelf && user.Bookshelf.length > 0) {
-            const hasJournals = user.Bookshelf.some(
-                (bookshelf) => bookshelf.journal && bookshelf.journal.length > 0
-            );
-            return hasJournals;
+        if (!user || !user.Bookshelf || user.Bookshelf[0].journal.length === 0) {
+            return null; //tai false?
         }
 
-        return false;
+        return user.Bookshelf[0].journal;
+    } catch (error) {
+        console.error("Error: ", error);
+        return null;
+    } finally {
+        await prisma.$disconnect();
+    }
+};
+
+export const getToDoListItems = async (userId, toDoListID) => {
+    try {        
+        const bookshelf = await prisma.bookshelf.findMany({
+            where: {
+                userId: userId,
+            },
+            include: {
+                journal: {
+                    include: {
+                        To_do_lists_collection: {
+                            where: {
+                                id: "333",
+                            },
+                        },
+                    },
+                },
+            }
+        });
+        console.log("bookshelf");
+        console.log(bookshelf);
+        console.log(bookshelf[0].journal.To_do_lists_collection);
+        // console.log(bookshelf.journal.todolist);
+        const user = await prisma.user.findUnique({
+            where: {
+                id: userId,
+            },
+            include: {
+                Bookshelf: {
+                    include: {
+                        journal: {
+                            include: {
+                                To_do_lists_collection: {
+                                    include: {
+                                        To_do_list_item: {
+                                            // where: {
+                                            //     id: "333",
+                                            // },
+                                            include: {
+                                                // To_do_list_item: true,
+                                                To_do_list_item: {
+                                                    where: {
+                                                        to_do_lists_collectionId: "333",
+                                                    },
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            }
+                        },
+                    },
+                },
+            },
+        });
+
+        console.log("user");
+        console.log(user);
+        console.log("journal");
+        console.log(user.Bookshelf[0].journal);
+        console.log("muuta");
+        // console.log(user.Bookshelf[0].journal.To_do_lists_collection);
+        // console.log(user.Bookshelf[0].journal[0].to_do_list_collection);
+        
+
+        // return false;
     } catch (error) {
         console.error("Failed to fetch user journals:", error);
         return false;
