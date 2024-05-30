@@ -33,6 +33,7 @@ const ProfilePage = ({ user }) => {
         reset,
         setValue,
         watch,
+        resetField,
         formState: { errors },
     } = useForm({
         defaultValues: {
@@ -79,7 +80,6 @@ const ProfilePage = ({ user }) => {
 
         reset();
         setData(result.data);
-        // revalidatePath("/profile");
     };
 
     return (
@@ -93,6 +93,11 @@ const ProfilePage = ({ user }) => {
                         readOnly={!showEditMode}
                         register={register}
                         errors={errors}
+                        watch={watch}
+                        user={user}
+                        reset={reset}
+                        showEditMode={showEditMode}
+                        resetField={resetField}
                     />
                     <div className="flex flex-col items-center md:items-start">
                         <LongButton

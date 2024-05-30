@@ -98,6 +98,25 @@ export const registerUser = async (formData) => {
     await prisma.$disconnect();
 };
 
+export const checkIfEmailExists = async (userId, email) => {
+    console.log("takana:", email);
+    const checkUser = await prisma.user.findFirst({
+        where: {
+            email: email,
+            NOT: {
+                id: userId,
+            },
+        },
+    });
+    console.log;
+
+    if (checkUser) {
+        return { exists: true, message: "Email already exists" };
+    } else {
+        return { exists: false, message: "Email is available" };
+    }
+};
+
 export const userHasJournals = async (userId) => {
     try {
         const user = await prisma.user.findUnique({
@@ -118,7 +137,7 @@ export const userHasJournals = async (userId) => {
             return null;
         }
 
-        return user.Bookshelf.journal;
+        return user.Bookshelf[0].journal;
     } catch (error) {
         console.error(error);
         return null;
@@ -142,7 +161,7 @@ export const UpdateUserData = async (username, formData) => {
     const session = await getSession();
 
     try {
-        const user = await prisma.user.update({
+        await prisma.user.update({
             where: { username: username },
             data: {
                 username: formData.username,
