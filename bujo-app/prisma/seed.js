@@ -1,6 +1,6 @@
 // This is a seed file for Prisma
 
-const { hashPassword } = require("@/app/lib/auth");
+const { hashPassword } = require("../src/app/lib/auth");
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
