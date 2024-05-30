@@ -16,7 +16,7 @@ async function main() {
             username: "Alice",
             password: hashPassword("securepassword"),
             email: "alice@example.test",
-            picture: "./public/1.png",
+            picture: "/profileimages/1.png",
             Bookshelf: {
                 create: [
                     {
@@ -236,7 +236,7 @@ async function main() {
             username: "John",
             password: hashPassword("test1234"),
             email: "john@example.test",
-            picture: "./public/2.png",
+            picture: "/profileimages/2.png",
             Bookshelf: {
                 create: [
                     {
