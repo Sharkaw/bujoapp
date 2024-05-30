@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 import { BaseButton } from "@/app/components/common/BaseButton";
 import { FiEdit3 } from "react-icons/fi";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { LiaSave } from "react-icons/lia";
-import { ImCancelCircle } from "react-icons/im";
+import { FiTrash } from "react-icons/fi";
+import { FiCheck } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import "./notes.css";
 
 const EditableNote = ({ title, date, content, onDelete }) => {
@@ -43,12 +43,17 @@ const EditableNote = ({ title, date, content, onDelete }) => {
     <div className="notes flex-col w-full border-4 border-gray-800 mt-5">
       <div className="flex w-full py-3 justify-between">
         {isEditing ? (
-          <input
-            type="text"
-            value={noteTitle}
-            onChange={(e) => setNoteTitle(e.target.value)}
-            className="text-gray-800 mt-2 ml-4 font-semibold text-center"
-          />
+          <>
+            <label htmlFor={`note-title-${date}`} className="sr-only">Title</label>
+            <input
+              id={`note-title-${date}`}
+              type="text"
+              value={noteTitle}
+              onChange={(e) => setNoteTitle(e.target.value)}
+              placeholder="Title"
+              className="text-gray-800 mt-2 ml-4 font-semibold text-center"
+            />
+          </>
         ) : (
           <p className="text-gray-800 mt-2 ml-4 font-semibold text-center">{noteTitle}</p>
         )}
@@ -56,21 +61,26 @@ const EditableNote = ({ title, date, content, onDelete }) => {
         <div className="flex">
           {isEditing ? (
             <>
-              <LiaSave onClick={handleSaveClick} className="h-6 w-6 mr-5 cursor-pointer" />
-              <ImCancelCircle onClick={handleCancelClick} className="h-6 w-6 mr-5 cursor-pointer" />
+              <FiCheck onClick={handleSaveClick} className="h-6 w-6 mr-5 cursor-pointer" />
+              <FiX onClick={handleCancelClick} className="h-6 w-6 mr-5 cursor-pointer" />
             </>
           ) : (
             <FiEdit3 onClick={handleEditClick} className="h-6 w-6 mr-5 cursor-pointer" />
           )}
-          <RiDeleteBin6Line onClick={handleDeleteClick} className="h-6 w-6 mr-10 cursor-pointer" />
+          <FiTrash onClick={handleDeleteClick} className="h-6 w-6 mr-10 cursor-pointer" />
         </div>
       </div>
       {isEditing ? (
-        <textarea
-          value={noteContent}
-          onChange={(e) => setNoteContent(e.target.value)}
-          className="text-gray-800 mb-5 mx-6 w-[calc(100%-3rem)] h-60"
-        />
+        <>
+          <label htmlFor={`note-content-${date}`} className="sr-only">Content</label>
+          <textarea
+            id={`note-content-${date}`}
+            value={noteContent}
+            onChange={(e) => setNoteContent(e.target.value)}
+            placeholder="Note..."
+            className="text-gray-800 mb-5 mx-6 w-[calc(100%-3rem)] h-60"
+          />
+        </>
       ) : (
         <p className="text-gray-800 mb-5 mx-6">{noteContent}</p>
       )}
