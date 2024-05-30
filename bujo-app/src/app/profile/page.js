@@ -1,5 +1,5 @@
 import { getSession, getUserData } from "../actions";
-import ProfilePage from "./Profile";
+import ProfilePage from "./ProfilePage";
 export default async function Profile() {
     try {
         const session = await getSession();
