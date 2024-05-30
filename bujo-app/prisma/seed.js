@@ -1,5 +1,6 @@
 // This is a seed file for Prisma
 
+const { hashPassword } = require("@/app/lib/auth");
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
@@ -13,7 +14,7 @@ async function main() {
         update: {},
         create: {
             username: "Alice",
-            password: "securepassword",
+            password: hashPassword("securepassword"),
             email: "alice@example.test",
             picture: "./public/1.png",
             Bookshelf: {
@@ -233,7 +234,7 @@ async function main() {
         update: {},
         create: {
             username: "John",
-            password: "test1234",
+            password: hashPassword("test1234"),
             email: "john@example.test",
             picture: "./public/2.png",
             Bookshelf: {
