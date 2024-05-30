@@ -166,7 +166,7 @@ export const UpdateUserData = async (username, formData) => {
             data: {
                 username: formData.username,
                 email: formData.email,
-                password: formData.password,
+                // password: formData.password,
                 picture: formData.picture,
             },
         });
