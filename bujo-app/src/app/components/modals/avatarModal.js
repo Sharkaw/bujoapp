@@ -55,12 +55,7 @@ const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
                         {[1, 2, 3, 4, 5, 6].map((num) => (
                             <div
                                 key={num}
-                                className={`relative cursor-pointer rounded-lg ${
-                                    tempSelectedPicture ===
-                                    `/profileimages/${num}.png`
-                                        ? "ring-2 ring-gray-300 rounded-lg"
-                                        : ""
-                                }`}
+                                className="relative cursor-pointer"
                                 onClick={() =>
                                     handlePictureClick(
                                         `/profileimages/${num}.png`
@@ -70,9 +65,14 @@ const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
                                 <Image
                                     src={`/profileimages/${num}.png`}
                                     alt={`Picture ${num}`}
-                                    className="rounded-lg"
-                                    width={100}
-                                    height={100}
+                                    className={`w-28 h-28 rounded-full ${
+                                        tempSelectedPicture ===
+                                        `/profileimages/${num}.png`
+                                            ? "ring-2 ring-gray-300"
+                                            : ""
+                                    }`}
+                                    width={112}
+                                    height={112}
                                 />
                             </div>
                         ))}
