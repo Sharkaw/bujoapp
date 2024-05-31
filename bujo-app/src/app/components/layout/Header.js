@@ -1,7 +1,5 @@
 import Link from "next/link";
-
 import { HamburgerMenuButton } from "../common/HamburgerMenuButton";
-
 import "./styles.css";
 import ProfileImage from "./ProfileImage";
 
