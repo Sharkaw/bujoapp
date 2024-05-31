@@ -5,7 +5,6 @@ import Sidebar from "./components/layout/Sidebar";
 import Footer from "./components/layout/Footer";
 
 const LayoutGrid = ({ children }) => {
-
     return (
         <html lang="en">
             <body className="flex flex-col bg-white text-gray-800">
@@ -19,7 +18,6 @@ const LayoutGrid = ({ children }) => {
                     <main className="flex-auto flex justify-center">
                         {children}
                     </main>
-                    
                 </div>
                 <Footer />
             </body>

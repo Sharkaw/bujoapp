@@ -15,7 +15,7 @@
         "flowbite-react": "^0.8.0",
         "iron-session": "^8.0.1",
         "lucide": "^0.368.0",
-        "next": "^14.2.1",
+        "next": "^14.2.3",
         "react": "^18",
         "react-dom": "^18",
         "react-hook-form": "^7.51.3",
