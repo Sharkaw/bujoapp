@@ -4,7 +4,7 @@ import SidebarMenu from "@/app/components/layout/SidebarMenu";
 export default async function Sidebar() {
     try {
         const session = await getSession();
-        const hasJournals = await userHasJournals(session.user.username);
+        const hasJournals = await userHasJournals(session.user.id);
 
         return <>{session && <SidebarMenu journals={hasJournals} />}</>;
     } catch (error) {

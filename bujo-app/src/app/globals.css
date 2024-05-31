@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+@import "flowbite";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "flowbite";
 
 :root {
     --foreground-rgb: 0, 0, 0;
@@ -23,12 +23,6 @@
 body {
     font-family: "Inter", sans-serif;
     color: rgb(var(--foreground-rgb));
-    /* background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))
-        )
-        rgb(var(--background-start-rgb)); */
 }
 
 @layer utilities {
@@ -39,7 +33,7 @@ body {
 
 @layer base {
     h1 {
-        @apply text-5xl font-kalam mb-5 p-2 text-gray-800;
+        @apply font-kalam mb-5 p-2 text-gray-800;
     }
     p {
         @apply font-inter text-gray-800;

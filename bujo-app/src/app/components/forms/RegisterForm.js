@@ -152,7 +152,6 @@ export default function RegisterForm() {
                     type="password"
                     placeholder="******************"
                 />
-
                 <hr />
                 <p className=" text-red-700 font-light text-xs mb-2 min-h-4">
                     {errors.confirmPassword && (

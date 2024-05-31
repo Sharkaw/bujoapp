@@ -1,12 +1,12 @@
 import { getSession, getUserData } from "../actions";
-import ProfilePage from "./ProfilePage";
+import NotesPage from "./NotesPage";
 export default async function Profile() {
     try {
         const session = await getSession();
         const user = await getUserData(session.user.id);
 
-        return <>{session && <ProfilePage user={user} />}</>;
+        return <>{session && <NotesPage user={user} />}</>;
     } catch (error) {
-        console.error("Could not get profile", error);
+        console.error("Could not get notes", error);
     }
 }

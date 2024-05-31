@@ -4,10 +4,10 @@ import { getIronSession } from "iron-session";
 import { defaultSession, sessionOptions } from "./lib/lib";
 import { cookies } from "next/headers";
 import { hashPassword, comparePassword } from "./lib/auth";
-// import { prisma } from "@/app/lib/prisma";
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient();
 
@@ -32,6 +32,7 @@ export const login = async (formData) => {
             username: true,
             email: true,
             password: true,
+            picture: true,
         },
     });
 
@@ -48,11 +49,10 @@ export const login = async (formData) => {
 
         await session.save();
 
-        // redirect("/register");
-        return { succes: true, error: "User logger in" };
+        return { success: true, error: "User logger in" };
     } else {
         console.log("User could not bee logged in");
-        return { succes: false, error: "Wrong credentials" };
+        return { success: false, error: "Wrong credentials" };
     }
 };
 export const logout = async () => {
@@ -77,26 +77,55 @@ export const registerUser = async (formData) => {
     }
 
     const hashedPassword = await hashPassword(password);
+    const defaultPicture = "/profileimages/7.png";
 
     const user = await prisma.user.create({
         data: {
             password: hashedPassword,
             email,
             username,
+            picture: defaultPicture,
         },
     });
 
-    session.user = { id: user.id, email: user.email, username: user.username };
+    session.user = {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+        picture: user.picture,
+    };
     await session.save();
     await prisma.$disconnect();
 };
 
-export const userHasJournals = async (username) => {
+export const checkIfEmailExists = async (userId, email) => {
+    console.log("takana:", email);
+    const checkUser = await prisma.user.findFirst({
+        where: {
+            email: email,
+            NOT: {
+                id: userId,
+            },
+        },
+    });
+    console.log;
+
+    if (checkUser) {
+        return { exists: true, message: "Email already exists" };
+    } else {
+        return { exists: false, message: "Email is available" };
+    }
+};
+
+export const userHasJournals = async (userId) => {
     try {
         const user = await prisma.user.findUnique({
-            where: { username },
+            where: {
+                id: userId,
+            },
             include: {
                 Bookshelf: {
+                    take: 1,
                     include: {
                         journal: true,
                     },
@@ -104,30 +133,50 @@ export const userHasJournals = async (username) => {
             },
         });
 
-        if (user && user.Bookshelf && user.Bookshelf.length > 0) {
-            const hasJournals = user.Bookshelf.some(
-                (bookshelf) => bookshelf.journal && bookshelf.journal.length > 0
-            );
-            return hasJournals;
+        if (!user || !user.Bookshelf.length) {
+            return null;
         }
 
-        return false;
+        return user.Bookshelf[0].journal;
     } catch (error) {
-        console.error("Failed to fetch user journals:", error);
-        return false;
+        console.error(error);
+        return null;
+    }
+};
+
+export const getUserData = async (id) => {
+    try {
+        const user = await prisma.user.findUnique({
+            where: { id: id },
+        });
+        return user;
+    } catch (error) {
+        console.error("Failed to fetch user data:", error);
     } finally {
         await prisma.$disconnect();
     }
 };
 
-export const getUserData = async (username) => {
+export const UpdateUserData = async (username, formData) => {
+    const session = await getSession();
+
     try {
-        const user = await prisma.user.findUnique({
+        await prisma.user.update({
             where: { username: username },
+            data: {
+                username: formData.username,
+                email: formData.email,
+                // password: formData.password,
+                picture: formData.picture,
+            },
         });
-        return user;
+
+        await session.save();
+        revalidatePath("/profile");
+
+        return { success: true, error: "User data updated" };
     } catch (error) {
-        console.error("Failed to fetch user data:", error);
+        console.error("Failed to update user data:", error);
     } finally {
         await prisma.$disconnect();
     }
