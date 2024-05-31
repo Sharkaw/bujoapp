@@ -54,7 +54,10 @@ const ProfilePage = ({ user }) => {
     };
 
     const handleCancel = () => {
-        reset();
+        reset({
+            username: user.username,
+            email: user.email,
+        });
         toggleEditMode();
     };
 
@@ -78,8 +81,8 @@ const ProfilePage = ({ user }) => {
             return;
         }
 
-        reset();
         setData(result.data);
+        setShowEditMode(false);
     };
 
     return (
@@ -113,7 +116,11 @@ const ProfilePage = ({ user }) => {
             <div className="w-full md:w-1/2 flex flex-col items-center  md:justify-start pr-3 mt-4 px-5">
                 <div className="max-w-40 mx-auto">
                     <Image
-                        src={selectedPicture}
+                        src={
+                            selectedPicture
+                                ? selectedPicture
+                                : "/profileimages/7.png"
+                        }
                         alt="user"
                         className="rounded-full"
                         width={150}
