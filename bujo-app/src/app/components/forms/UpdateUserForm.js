@@ -16,12 +16,12 @@ export default function UpdateUserForm({
 }) {
     const [showMessage, setShowMessage] = useState(false);
     const [emailMessage, setEmailMessage] = useState("");
-    const [showChangePassword, setShowChangePassword] = useState(false);
+    // const [showChangePassword, setShowChangePassword] = useState(false);
 
     const handleCancel = () => {
         resetField("password");
         resetField("confirmPassword");
-        setShowChangePassword(!showChangePassword);
+        // setShowChangePassword(!showChangePassword);
     };
 
     const handleEmailCheck = async (email) => {
@@ -92,7 +92,8 @@ export default function UpdateUserForm({
                     {errors.email?.message}
                 </p>
                 <div className="flex flex-col items-center md:items-start">
-                    {showEditMode && (
+                    {/* NOTE(Suvi): Hiding this unfinish snippet to wait for implementation */}
+                    {/* {showEditMode && (
                         <>
                             <LongButton
                                 title={
@@ -116,7 +117,7 @@ export default function UpdateUserForm({
                                 </div>
                             )}
                         </>
-                    )}
+                    )} */}
                 </div>
             </div>
         </form>
