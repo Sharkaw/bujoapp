@@ -11,6 +11,9 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
+export const tallennusTesti = async (tmpSession) => {
+    await tmpSession.save();
+};
 export const getSession = async () => {
     const session = await getIronSession(cookies(), sessionOptions);
 
@@ -127,6 +130,22 @@ export const createBookshelf = async (userId) => {
         return null;
     } finally {
         await prisma.$disconnect();
+    }
+};
+
+export const createToDoList = async (userId) => {
+    try {
+        const session = await getSession();
+        session.user.bookshelf = "pöö";
+        session.user = {
+            seppo: "pöö",
+        }
+        // await session.save();
+        await tallennusTesti(session);
+        console.log("toDoList");
+    } catch (error) {
+        console.error("Error: ", error);
+        return null;
     }
 };
 

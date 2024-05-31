@@ -7,6 +7,8 @@ import { BaseButton } from "@/app/components/common/BaseButton";
 import { TbCheckbox } from "react-icons/tb";
 import { RiCheckboxBlankLine } from "react-icons/ri";
 
+import { test } from '../../../server/actions/test';
+
 import "./style.css";
 
 // async function test() {
