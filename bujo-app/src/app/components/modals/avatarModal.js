@@ -80,7 +80,7 @@ const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
                     <div className="flex items-center justify-end p-4 border-t">
                         <div className="px-4 py-2 text-white rounded">
                             <BaseButton
-                                title="Save"
+                                title="Select"
                                 variant="success"
                                 type="button"
                                 onClick={handleSave}
