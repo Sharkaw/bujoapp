@@ -1,8 +1,8 @@
 "use client";
 import { login } from "@/app/actions";
-import { LongButton } from "@/app/components/common/LongButton";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { LongButton } from "../common/LongButton";
 
 export default function LoginForm() {
     const {
