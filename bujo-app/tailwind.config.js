@@ -17,11 +17,6 @@ module.exports = {
             kalam: [' "Kalam" ', "sans-serif"],
             inter: [' "Inter" ', "sans-serif"],
         },
-        extend: {
-            screens: {
-                "custom-md": "800px",
-            },
-        },
     },
     plugins: [flowbite.plugin()],
 };

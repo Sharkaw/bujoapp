@@ -5,9 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import ShowPasswordStrength from "./ShowPasswordStrength";
 import { passwordStrength } from "check-password-strength";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-// import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { registerUser } from "@/app/actions";
-import { redirect } from "next/dist/server/api-utils";
 
 export default function RegisterForm() {
     const {
@@ -153,7 +152,6 @@ export default function RegisterForm() {
                     type="password"
                     placeholder="******************"
                 />
-
                 <hr />
                 <p className=" text-red-700 font-light text-xs mb-2 min-h-4">
                     {errors.confirmPassword && (
