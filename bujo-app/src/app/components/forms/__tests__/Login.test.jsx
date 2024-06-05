@@ -1,4 +1,4 @@
-import { describe, test, expect, vi, beforeEach, beforeAll } from "vitest";
+import { describe, test, expect, beforeAll } from "vitest";
 import { render, screen } from "@testing-library/react";
 import LoginForm from "../LoginForm";
 import userEvent from "@testing-library/user-event";
@@ -27,18 +27,5 @@ describe("Login", () => {
 
         expect(emailInput).toHaveDisplayValue("Alice@test.test");
         expect(passwordInput).toHaveDisplayValue("securepassword1234");
-    });
-
-    test("error is displayed when email value is invalid", async () => {
-        const emailInput = await screen.findByLabelText(/Email/i);
-        const loginButton = screen.getByRole("button", {
-            name: /login/i,
-            type: "submit",
-        });
-
-        await user.type(emailInput, "Alicetest.test");
-
-        // Example validation check
-        // expect(emailInput.validationMessage).toBe("Please type email");
     });
 });
