@@ -1,9 +1,13 @@
-import { describe, test, expect, beforeAll } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, test, expect, beforeAll, vi } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
 import LoginForm from "../LoginForm";
 import userEvent from "@testing-library/user-event";
+import { login } from "@/app/actions";
 
 const user = userEvent.setup();
+vi.mock("@/app/actions", () => ({
+    login: vi.fn().mockResolvedValue({ success: true }),
+}));
 
 describe("Login", () => {
     beforeAll(() => {
@@ -25,7 +29,29 @@ describe("Login", () => {
         await user.type(emailInput, "Alice@test.test");
         await user.type(passwordInput, "securepassword1234");
 
-        expect(emailInput).toHaveDisplayValue("Alice@test.test");
-        expect(passwordInput).toHaveDisplayValue("securepassword1234");
+        expect(emailInput).toHaveValue("Alice@test.test");
+        expect(passwordInput).toHaveValue("securepassword1234");
+    });
+
+    test("form is submitted", async () => {
+        const emailInput = await screen.findByLabelText(/Email/i);
+        const passwordInput = await screen.findByLabelText(/Password/i);
+        const loginButton = screen.getByRole("button", { name: /login/i });
+
+        await user.clear(emailInput);
+        await user.clear(passwordInput);
+
+        await user.type(emailInput, "alice@example.com");
+        await user.type(passwordInput, "securepassword1234");
+
+        await user.click(loginButton);
+
+        await waitFor(() => {
+            expect(login).toHaveBeenCalledWith({
+                email: "alice@example.com",
+                password: "securepassword1234",
+            });
+            expect(login).toHaveBeenCalledTimes(1);
+        });
     });
 });
