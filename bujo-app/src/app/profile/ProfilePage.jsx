@@ -125,6 +125,7 @@ const ProfilePage = ({ user }) => {
                         className="rounded-full"
                         width={150}
                         height={150}
+                        data-testid="profile-image"
                     />
                 </div>
                 <input

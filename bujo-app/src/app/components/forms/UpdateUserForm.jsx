@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { checkIfEmailExists } from "@/app/actions";
-import ChangePassword from "./ChangePassword";
-import { LongButton } from "../common/LongButton";
+// import ChangePassword from "./ChangePassword";
+// import { LongButton } from "../common/LongButton";
 
 export default function UpdateUserForm({
     readOnly,
