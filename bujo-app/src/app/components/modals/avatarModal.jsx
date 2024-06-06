@@ -84,6 +84,7 @@ const Modal = ({ showModal, toggleModal, handlePictureSelect }) => {
                                 variant="success"
                                 type="button"
                                 onClick={handleSave}
+                                data-testid="select-button"
                             />
                         </div>
                     </div>

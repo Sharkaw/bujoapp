@@ -76,7 +76,7 @@ export const registerUser = async (formData) => {
         );
     }
 
-    const hashedPassword = await hashPassword(password);
+    const hashedPassword = hashPassword(password);
     const defaultPicture = "/profileimages/7.png";
 
     const user = await prisma.user.create({
@@ -99,7 +99,6 @@ export const registerUser = async (formData) => {
 };
 
 export const checkIfEmailExists = async (userId, email) => {
-    console.log("takana:", email);
     const checkUser = await prisma.user.findFirst({
         where: {
             email: email,
