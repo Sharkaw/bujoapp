@@ -1,8 +1,10 @@
 "use client";
 import { login } from "@/app/actions";
-import { LongButton } from "@/app/components/common/LongButton";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { LongButton } from "../common/LongButton";
+import ThemeContext from "@/app/lib/ThemeContext";
+import ThemeToggle from "../ThemeToggle";
 
 export default function LoginForm() {
     const {
@@ -26,12 +28,37 @@ export default function LoginForm() {
             console.log(result.error);
             return;
         }
-
         reset();
         setData(result.data);
     };
+    const { theme, user } = useContext(ThemeContext);
 
     return (
+        <div>
+            {/* <div
+                className={`min-h-screen ${
+                    theme === "light" ? "bg-white" : "bg-gray-900"
+                }`}
+            >
+                <title>Next.js with Tailwind CSS and useContext</title>
+                <meta
+                    name="description"
+                    content="A sample project using Next.js, Tailwind CSS, and useContext"
+                />
+                <link rel="icon" href="/favicon.ico" />
+
+                <main className="flex flex-col items-center justify-center py-20">
+                    <h1
+                        className={`text-4xl ${
+                            theme === "light" ? "text-black" : "text-white"
+                        }`}
+                    >
+                        Welcome to Next.js with Tailwind CSS
+                    </h1>
+                    <p>{user}</p>
+                    <ThemeToggle />
+                </main>
+            </div> */}
         <form
             className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
             onSubmit={handleSubmit(processForm)}
@@ -86,5 +113,6 @@ export default function LoginForm() {
                 </a>
             </div>
         </form>
+        </div>
     );
 }

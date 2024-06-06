@@ -3,6 +3,7 @@ import { BaseButton } from "@/app/components/common/BaseButton";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";
+import Journals from "../components/Journals";
 
 const BookShelfPage = () => {
     return (
@@ -10,6 +11,7 @@ const BookShelfPage = () => {
             <div className="flex flex-col mt-5 w-full mx-auto">
                 <div className="flex flex-row justify-between">
                     <h1 className="text-5xl text-gray-800 mb-5">Bookshelf</h1>
+                    <Journals />
                     <div className="ml-10">
                         <BaseButton
                             title="Create new"
