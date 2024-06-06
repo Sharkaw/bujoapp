@@ -33,6 +33,46 @@ describe("Login", () => {
         expect(passwordInput).toHaveValue("securepassword1234");
     });
 
+    test("validates email input", async () => {
+        const emailInput = await screen.findByLabelText(/Email/i);
+        const loginButton = screen.getByRole("button", { name: /login/i });
+
+        //empty input
+        await user.clear(emailInput);
+        await user.click(loginButton);
+
+        expect(
+            await screen.findByText("Please type email")
+        ).toBeInTheDocument();
+        expect(login).not.toHaveBeenCalled();
+
+        //not an email
+        await user.clear(emailInput);
+        await user.type(emailInput, "alicetest");
+        await user.click(loginButton);
+
+        expect(
+            await screen.findByText("Invalid email address")
+        ).toBeInTheDocument();
+        expect(login).not.toHaveBeenCalled();
+    });
+
+    test("validates password input", async () => {
+        const passwordInput = await screen.findByLabelText(/Password/i);
+        const loginButton = screen.getByRole("button", {
+            name: /login/i,
+        });
+
+        //empty input
+        await user.clear(passwordInput);
+        await user.click(loginButton);
+
+        expect(
+            await screen.findByText("Please type password")
+        ).toBeInTheDocument();
+        expect(login).not.toHaveBeenCalled();
+    });
+
     test("form is submitted", async () => {
         const emailInput = await screen.findByLabelText(/Email/i);
         const passwordInput = await screen.findByLabelText(/Password/i);
