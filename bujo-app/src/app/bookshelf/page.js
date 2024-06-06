@@ -9,10 +9,9 @@ export default async function Profile() {
         //
         const hasJournals = await userHasJournals(session.user.id);
         console.log(hasJournals);
-        <Journals journals={hasJournals}/>
-        //
+        // <Journals journals={hasJournals}/>
 
-        return <>{session && <BookShelfPage user={user} />}</>;
+        return <>{session && <BookShelfPage user={user} hasJournals={hasJournals} />}</>;
     } catch (error) {
         console.error("Could not get profile", error);
     }

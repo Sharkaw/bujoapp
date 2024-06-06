@@ -181,3 +181,8 @@ export const UpdateUserData = async (username, formData) => {
         await prisma.$disconnect();
     }
 };
+
+export const test = () => {
+    console.log("heip from action");
+    return {id:212};
+};

@@ -21,11 +21,20 @@ const test2 = (setJournal) => {
     });
 }
 
-const Journals = () => {
-    const { jounal, setJournal } = useContext(JournalContext);
+const Journals = ({hasJournals}) => {
+    // const { jounal, setJournal } = useContext(JournalContext);
     console.log("journal > 0");
+    console.log(hasJournals);
+    
+    // hasJournals ? (
+    //     hasJournals.map((journal, index) => (
+    //         console.log(journal)
+    //     ))
+    // ) : (
+    //     console.log("paska")
+    // )
     // console.log(test());
-    test2(setJournal);
+    // test2(setJournal);
     // if (journals.length > 0) {
     //     console.log("journal > 0");
     // } else {

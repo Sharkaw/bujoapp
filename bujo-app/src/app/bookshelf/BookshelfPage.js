@@ -3,15 +3,26 @@ import { BaseButton } from "@/app/components/common/BaseButton";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";
-import Journals from "../components/Journals";
 
-const BookShelfPage = () => {
+import { useContext } from "react";
+import JournalContext from "../lib/JournalContext";
+import Journals from "../components/Journals";
+import { test } from "../actions";
+
+const BookShelfPage = ({user, hasJournals}) => {
+    const demoData = test();
+    console.log(demoData);
+    
+    // const { jounal, setJournal } = useContext(JournalContext);
+    console.log("hasJournals");
+    console.log(hasJournals);
+    // <Journals journals={hasJournals}/>
     return (
         <div className="flex flex-col md:flex-row w-full max-w-[1000px] mb-10 mx-3">
             <div className="flex flex-col mt-5 w-full mx-auto">
                 <div className="flex flex-row justify-between">
                     <h1 className="text-5xl text-gray-800 mb-5">Bookshelf</h1>
-                    <Journals />
+                    <Journals journals={hasJournals}/>
                     <div className="ml-10">
                         <BaseButton
                             title="Create new"

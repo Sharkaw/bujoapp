@@ -5,8 +5,12 @@ import { useState, useContext } from "react";
 import { LongButton } from "../common/LongButton";
 import ThemeContext from "@/app/lib/ThemeContext";
 import ThemeToggle from "../ThemeToggle";
+// import JournalContext from "@/app/lib/JournalContext";
+
 
 export default function LoginForm() {
+    // const { jounal, setJournal } = useContext(JournalContext);
+
     const {
         register,
         handleSubmit,
