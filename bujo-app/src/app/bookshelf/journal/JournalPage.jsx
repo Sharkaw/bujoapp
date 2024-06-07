@@ -1,9 +1,9 @@
 import { getJournalById } from "@/app/actions";
 
 export default async function JournalPage ({user, journalId}) {
-    // const userJournal = await getJournalById("222");
+    const userJournal = await getJournalById("222");
     // console.log(userJournal.title);
-    const userJournal = journalId;
+    // const userJournal = journalId;
     return (
         <>
             <h1>hellou</h1>
