@@ -53,7 +53,7 @@ export default function RegisterForm() {
             <div className="mb-4 p-1">
                 <div>
                     <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-gray-800 dark:text-white text-sm font-bold mb-2"
                         htmlFor="username"
                     >
                         Username
@@ -66,7 +66,7 @@ export default function RegisterForm() {
                             },
                             validate: {},
                         })}
-                        className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                         id="username"
                         type="text"
                         placeholder="Username"
@@ -77,7 +77,7 @@ export default function RegisterForm() {
                     </p>
                 </div>
                 <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
+                    className="block text-gray-800 dark:text-white text-sm font-bold mb-2"
                     htmlFor="email"
                 >
                     Email
@@ -90,7 +90,7 @@ export default function RegisterForm() {
                             message: "Invalid email address",
                         },
                     })}
-                    className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                     id="email"
                     type="email"
                     placeholder="Email"
@@ -100,7 +100,7 @@ export default function RegisterForm() {
                     {errors.email?.message}
                 </p>
                 <label
-                    className="block text-gray-800 text-sm font-bold mb-2"
+                    className="block text-gray-800 dark:text-white text-sm font-bold mb-2"
                     htmlFor="password"
                 >
                     Password
@@ -136,7 +136,7 @@ export default function RegisterForm() {
                     {errors.password?.message}
                 </p>
                 <label
-                    className="block text-gray-800 text-sm font-bold mb-2"
+                    className="block text-gray-800 dark:text-white text-sm font-bold mb-2"
                     htmlFor="confirmPassword"
                 >
                     Confirm password
@@ -148,7 +148,7 @@ export default function RegisterForm() {
                             value === password.current ||
                             "Passwords don't match",
                     })}
-                    className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                     id="confirmPassword"
                     type="password"
                     placeholder="******************"

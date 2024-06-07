@@ -38,7 +38,7 @@ export default function LoginForm() {
         >
             <div className="mb-4 p-1 border-b">
                 <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
+                    className="block text-gray-800 dark:text-white text-sm font-bold mb-2"
                     htmlFor="email"
                 >
                     Email
@@ -51,7 +51,7 @@ export default function LoginForm() {
                             message: "Invalid email address",
                         },
                     })}
-                    className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                     id="email"
                     type="text"
                     placeholder="Email"
@@ -71,7 +71,7 @@ export default function LoginForm() {
                     {...register("password", {
                         required: "Please type password",
                     })}
-                    className=" appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className=" appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                     id="password"
                     type="password"
                     placeholder="******************"
