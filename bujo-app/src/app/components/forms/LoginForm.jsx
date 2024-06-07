@@ -1,16 +1,10 @@
 "use client";
 import { login } from "@/app/actions";
 import { useForm } from "react-hook-form";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { LongButton } from "../common/LongButton";
-import ThemeContext from "@/app/lib/ThemeContext";
-import ThemeToggle from "../ThemeToggle";
-// import JournalContext from "@/app/lib/JournalContext";
-
 
 export default function LoginForm() {
-    // const { jounal, setJournal } = useContext(JournalContext);
-
     const {
         register,
         handleSubmit,
@@ -32,37 +26,12 @@ export default function LoginForm() {
             console.log(result.error);
             return;
         }
+
         reset();
         setData(result.data);
     };
-    const { theme, user } = useContext(ThemeContext);
 
     return (
-        <div>
-            {/* <div
-                className={`min-h-screen ${
-                    theme === "light" ? "bg-white" : "bg-gray-900"
-                }`}
-            >
-                <title>Next.js with Tailwind CSS and useContext</title>
-                <meta
-                    name="description"
-                    content="A sample project using Next.js, Tailwind CSS, and useContext"
-                />
-                <link rel="icon" href="/favicon.ico" />
-
-                <main className="flex flex-col items-center justify-center py-20">
-                    <h1
-                        className={`text-4xl ${
-                            theme === "light" ? "text-black" : "text-white"
-                        }`}
-                    >
-                        Welcome to Next.js with Tailwind CSS
-                    </h1>
-                    <p>{user}</p>
-                    <ThemeToggle />
-                </main>
-            </div> */}
         <form
             className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
             onSubmit={handleSubmit(processForm)}
@@ -77,6 +46,10 @@ export default function LoginForm() {
                 <input
                     {...register("email", {
                         required: "Please type email",
+                        pattern: {
+                            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                            message: "Invalid email address",
+                        },
                     })}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="email"
@@ -117,6 +90,5 @@ export default function LoginForm() {
                 </a>
             </div>
         </form>
-        </div>
     );
 }
