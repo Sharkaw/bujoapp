@@ -79,56 +79,6 @@ const BookShelfPage = ({user, hasJournals}) => {
                     ) : (
                         <></>
                     )}
-                    <div className="flex m-3  w-40 md:w-48">
-                        <div className="flex flex-col">
-                            <Link href="/journal-title">
-                                <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40" />
-                                <p className="text-gray-800 mt-2 ml-4 font-semibold text-center text-xl w-max-32">
-                                    Demo Journal
-                                </p>
-                            </Link>
-                        </div>
-                        <div className="flex flex-col justify-end h-32 md:h-40">
-                            <FiEdit3 className="h-6 w-6 mb-5 cursor-pointer" />
-                            <RiDeleteBin6Line className="h-6 w-6 cursor-pointer" />
-                        </div>
-                    </div>
-                    <div className="flex m-3  w-40 md:w-48">
-                        <div className="flex flex-col">
-                            <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40" />
-                            <p className="text-gray-800 mt-2 ml-4 font-semibold text-center text-xl">
-                                Journal title
-                            </p>
-                        </div>
-                        <div className="flex flex-col justify-end h-32 md:h-40">
-                            <FiEdit3 className="h-6 w-6 mb-5 cursor-pointer" />
-                            <RiDeleteBin6Line className="h-6 w-6 cursor-pointer" />
-                        </div>
-                    </div>
-                    <div className="flex m-3  w-40 md:w-48">
-                        <div className="flex flex-col">
-                            <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40" />
-                            <p className="text-gray-800 mt-2 ml-4 font-semibold text-center text-xl">
-                                Journal title
-                            </p>
-                        </div>
-                        <div className="flex flex-col justify-end h-32 md:h-40">
-                            <FiEdit3 className="h-6 w-6 mb-5 cursor-pointer" />
-                            <RiDeleteBin6Line className="h-6 w-6 cursor-pointer" />
-                        </div>
-                    </div>
-                    <div className="flex m-3  w-40 md:w-48">
-                        <div className="flex flex-col">
-                            <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40" />
-                            <p className="text-gray-800 mt-2 ml-4 font-semibold text-center text-xl">
-                                Journal title
-                            </p>
-                        </div>
-                        <div className="flex flex-col justify-end h-32 md:h-40">
-                            <FiEdit3 className="h-6 w-6 mb-5 cursor-pointer" />
-                            <RiDeleteBin6Line className="h-6 w-6 cursor-pointer" />
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

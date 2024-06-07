@@ -143,6 +143,42 @@ export const userHasJournals = async (userId) => {
     }
 };
 
+export const getJournalById = async (journalId) => {
+    try {
+        const journal = await prisma.journal.findUnique({
+            where: { id: journalId },
+            include: {
+                Notes_collection: {
+                    include: {
+                        Notes_item: true,
+                    },
+                },
+                Sticky_notes_collection: {
+                    include: {
+                        Sticky_note_item: true,
+                    },
+                },
+                To_do_lists_collection: {
+                    include: {
+                        To_do_list_item: true,
+                    },
+                },
+                Calendar_collection: {
+                    include: {
+                        Calendar_item: true,
+                    },
+                },
+            },
+        });
+        console.log(journal);
+        return journal;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+
+};
+
 export const getUserData = async (id) => {
     try {
         const user = await prisma.user.findUnique({
