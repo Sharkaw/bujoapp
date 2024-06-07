@@ -1,4 +1,3 @@
-/* Tailwind CSS classes */
 .sidebar {
     border-radius: 0 10px 10px 0 / 0 225px 225px 0;
 }
@@ -28,13 +27,13 @@ body.dark {
     background-color: #2d3748;
 }
 .dark .bg-gray-700 {
-    background-color: #4a5568;
+    background-color: #2d3748;
 }
 .dark .hover\:bg-gray-100:hover {
     background-color: #2d3748;
 }
 .dark .hover\:bg-gray-600:hover {
-    background-color: #718096;
+    background-color: #4a5568;
 }
 .dark .text-gray-800 {
     color: #cbd5e0;
@@ -42,3 +41,4 @@ body.dark {
 .dark .text-gray-200 {
     color: #e2e8f0;
 }
+

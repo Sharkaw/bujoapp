@@ -13,7 +13,7 @@ export default function DropdownMenu({ isDarkMode, toggleTheme }) {
                 </li>
                 <hr />
                 <li className={`px-4 py-2 ${isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-100'}`}>
-                    <Link href="/edit-profile" className="flex items-center space-x-2">
+                    <Link href="/profile" className="flex items-center space-x-2">
                         <FiEdit />
                         <span>Edit Profile</span>
                     </Link>
