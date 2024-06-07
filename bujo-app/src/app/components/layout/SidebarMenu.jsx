@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import {
     FiUser,
@@ -27,7 +27,9 @@ export default function SidebarMenu({ journals }) {
     return (
         <div
             id="sidebarDiv"
-            className={`h-full w-full border-slate-300 border-solid border-r-4 sidebar md:border-b-0 ${darkMode ? 'dark' : 'light'}`}
+            className={`bg-gray-50 dark:bg-gray-800 h-full w-full border-slate-300 border-solid border-r-4 sidebar md:border-b-0 ${
+                darkMode ? "dark" : "light"
+            }`}
         >
             <Sidebar
                 id="sidebar"
