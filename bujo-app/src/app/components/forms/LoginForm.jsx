@@ -1,8 +1,8 @@
 "use client";
 import { login } from "@/app/actions";
-import { LongButton } from "@/app/components/common/LongButton";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { LongButton } from "../common/LongButton";
 
 export default function LoginForm() {
     const {
@@ -46,6 +46,10 @@ export default function LoginForm() {
                 <input
                     {...register("email", {
                         required: "Please type email",
+                        pattern: {
+                            value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                            message: "Invalid email address",
+                        },
                     })}
                     className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="email"

@@ -67,7 +67,7 @@ export default function RegisterForm() {
                             validate: {},
                         })}
                         className="appearance-none border-none bg-transparent rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="userName"
+                        id="username"
                         type="text"
                         placeholder="Username"
                     />
@@ -124,6 +124,7 @@ export default function RegisterForm() {
                         id="password"
                         type={passwordShown ? "text" : "password"}
                         placeholder="******************"
+                        data-testid="password-input"
                     />
                     <i onClick={togglePasswordVisiblity}>
                         {passwordShown ? <FiEye /> : <FiEyeOff />}
@@ -151,6 +152,7 @@ export default function RegisterForm() {
                     id="confirmPassword"
                     type="password"
                     placeholder="******************"
+                    data-testid="confirm-password-input"
                 />
                 <hr />
                 <p className=" text-red-700 font-light text-xs mb-2 min-h-4">
