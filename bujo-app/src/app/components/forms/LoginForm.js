@@ -33,7 +33,7 @@ export default function LoginForm() {
 
     return (
         <form
-            className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
+            className="rounded mx-12 p-2 pb-8 mb-4"
             onSubmit={handleSubmit(processForm)}
         >
             <div className="mb-4 p-1 border-b">

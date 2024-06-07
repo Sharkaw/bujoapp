@@ -47,7 +47,7 @@ export default function RegisterForm() {
 
     return (
         <form
-            className=" bg-white rounded mx-12 p-2 pb-8 mb-4"
+            className="rounded mx-12 p-2 pb-8 mb-4"
             onSubmit={handleSubmit(onSubmit)}
         >
             <div className="mb-4 p-1">
