@@ -6,7 +6,7 @@ import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import JournalContext from "../lib/JournalContext";
 import Journals from "../components/Journals";
 // import { test } from "../actions";
@@ -15,22 +15,30 @@ import { getUserData } from "../actions";
 async function test(setJournal, hasJournals) {
     // const { journal, setJournal } = useContext(JournalContext);
     // const user = getUserData("95218f5f-ce6b-4132-8321-42b2bb4b8a2c");
-    console.log("heip");
+    // console.log("heip");
     setJournal(() => hasJournals);
 }
 
 const BookShelfPage = ({user, hasJournals}) => {
+    // const { journal, setJournal } = useContext(JournalContext);
+    // const demoData = test(setJournal, hasJournals);
+
     const { journal, setJournal } = useContext(JournalContext);
-    const demoData = test(setJournal, hasJournals);
+
+    // Use useEffect to set the journal state after the component has been rendered
+    useEffect(() => {
+        setJournal(hasJournals);
+    }, [hasJournals, setJournal]);
+
     // const demoData = getUserData("95218f5f-ce6b-4132-8321-42b2bb4b8a2c");
-    console.log(demoData);
+    // console.log(demoData);
     
     // const { jounal, setJournal } = useContext(JournalContext);
-    console.log("hasJournals");
-    journal.map((journal, index) => (
-        console.log(journal.id),
-        console.log(index)
-    ))
+    // console.log("hasJournals");
+    // journal.map((journal, index) => (
+    //     console.log(journal.id),
+    //     console.log(index)
+    // ))
     // console.log(hasJournals);
     // <Journals journals={hasJournals}/>
     return (
@@ -55,7 +63,7 @@ const BookShelfPage = ({user, hasJournals}) => {
                                 key={index}
                             >
                                 <div className="flex flex-col">
-                                    <Link href={journal.id}>
+                                    <Link href={`/journal/${journal.id}`}>
                                         <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40" />
                                         <p className="text-gray-800 font-semibold text-center text-xl w-max-32">
                                             {journal.title}

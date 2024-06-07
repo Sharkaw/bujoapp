@@ -1,8 +1,7 @@
 import { getJournalById, getSession, getUserData } from "@/app/actions";
-
 import JournalPage from "./JournalPage";
 
-export default async function Profile() {
+export default async function Journal() {
     try {
         const session = await getSession();
         const user = await getUserData(session.user.id);

@@ -170,7 +170,7 @@ export const getJournalById = async (journalId) => {
                 },
             },
         });
-        console.log(journal);
+        console.log("getJournalByID ",journal);
         return journal;
     } catch (error) {
         console.error(error);

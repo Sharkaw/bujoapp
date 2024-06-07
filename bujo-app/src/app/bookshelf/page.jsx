@@ -6,7 +6,7 @@ export default async function Profile() {
         const user = await getUserData(session.user.id);
 
         const hasJournals = await userHasJournals(session.user.id);
-        console.log(hasJournals);
+        console.log("BookshelfPage ", hasJournals);
 
         return <>{session && <BookShelfPage user={user} hasJournals={hasJournals} />}</>;
     } catch (error) {
