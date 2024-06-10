@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { logout } from "@/app/actions";
 import {
     FiEdit,
     FiUsers,
@@ -9,6 +10,11 @@ import {
 } from "react-icons/fi";
 
 export default function DropdownMenu({ isDarkMode, toggleTheme }) {
+
+    const handleClick = async () => {
+        await logout();
+    };
+
     return (
         <div
             className={`absolute right-0 custom-dropdown-margin w-48 rounded-md shadow-lg z-10 ${
@@ -75,6 +81,7 @@ export default function DropdownMenu({ isDarkMode, toggleTheme }) {
                     <Link
                         href="/logout"
                         className="flex items-center space-x-2"
+                        onClick={handleClick}
                     >
                         <FiLogOut />
                         <span>Logout</span>
