@@ -1,12 +1,12 @@
 "use client";
 
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import { BaseButton } from "@/app/components/common/BaseButton";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsJournalBookmarkFill } from "react-icons/bs";
-
-import { useContext, useEffect } from "react";
+import BookshelfSkeleton from "../components/skeleton/BookshelfSkeleton";
 import JournalContext from "../lib/JournalContext";
 import Journals from "../components/Journals";
 
@@ -16,6 +16,18 @@ const BookShelfPage = ({ hasJournals }) => {
     useEffect(() => {
         setJournal(hasJournals);
     }, [hasJournals, setJournal]);
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Simulate a delay to show the skeleton
+        const timer = setTimeout(() => setLoading(false), 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return <BookshelfSkeleton />;
+    }
 
     return (
         <div className="flex flex-col md:flex-row w-full max-w-[1000px] mb-10 mx-3">

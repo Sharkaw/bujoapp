@@ -1,5 +1,6 @@
 export const defaultSession = {
     isLoggedIn: false,
+    isDarkMode: false,
 };
 
 export const sessionOptions = {

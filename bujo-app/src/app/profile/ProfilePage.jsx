@@ -7,10 +7,12 @@ import Modal from "@/app/components/modals/avatarModal";
 import UpdateUserForm from "../components/forms/UpdateUserForm";
 import { useForm } from "react-hook-form";
 import { UpdateUserData } from "../actions";
+import ProfileSkeleton from "../components/skeleton/ProfileSkeleton";
 
 const ProfilePage = ({ user }) => {
+    const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
-    const [selectedPicture, setSelectedPicture] = useState(user.picture);
+    const [selectedPicture, setSelectedPicture] = useState(user?.picture);
     const [pictureDimensions, setPictureDimensions] = useState({
         width: 100,
         height: 100,
@@ -27,6 +29,12 @@ const ProfilePage = ({ user }) => {
         }
     }, [selectedPicture]);
 
+    useEffect(() => {
+        // Simulate a delay to show the skeleton
+        const timer = setTimeout(() => setLoading(false), 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
     const {
         register,
         handleSubmit,
@@ -37,10 +45,10 @@ const ProfilePage = ({ user }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            username: user.username,
-            email: user.email,
+            username: user?.username,
+            email: user?.email,
             password: "",
-            profilePicture: user.picture,
+            profilePicture: user?.picture,
         },
     });
 
@@ -84,6 +92,10 @@ const ProfilePage = ({ user }) => {
         setData(result.data);
         setShowEditMode(false);
     };
+
+    if (loading) {
+        return <ProfileSkeleton />;
+    }
 
     return (
         <div className="flex flex-col md:flex-row mb-10 w-full mt-8 m-1 p-1">

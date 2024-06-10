@@ -18,7 +18,26 @@ export const getSession = async () => {
         session.isLoggedIn = defaultSession.isLoggedIn;
     }
 
+    if (!session.isDarkMode) {
+        session.isDarkMode = defaultSession.isDarkMode;
+    }
     return session;
+};
+
+export const getTheme = async () => {
+    const session = await getSession();
+
+    return session.isDarkMode;
+};
+
+export const toggleTheme = async () => {
+    const session = await getSession();
+
+    session.isDarkMode = !session.isDarkMode;
+
+    await session.save();
+
+    return session.isDarkMode;
 };
 export const login = async (formData) => {
     const session = await getSession();

@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import {
     FiUser,
     FiBook,
@@ -17,6 +18,8 @@ import "./styles.css";
 import { logout } from "@/app/actions";
 
 export default function SidebarMenu({ journals }) {
+    const [darkMode, setDarkMode] = useState(false);
+
     const handleClick = async () => {
         await logout();
     };
@@ -24,11 +27,13 @@ export default function SidebarMenu({ journals }) {
     return (
         <div
             id="sidebarDiv"
-            className="bg-gray-50 h-full w-full border-slate-300 border-solid border-r-4 sidebar md:border-b-0"
+            className={`bg-gray-50 dark:bg-gray-800 h-full w-full border-slate-300 border-solid border-r-4 sidebar md:border-b-0 ${
+                darkMode ? "dark" : "light"
+            }`}
         >
             <Sidebar
                 id="sidebar"
-                className="md:mt-8 mx-auto p-2 hidden md:flex"
+                className="md:mt-2 mx-auto p-2 hidden md:flex"
             >
                 <Sidebar.Items className="text-gray-800">
                     <Sidebar.ItemGroup>
