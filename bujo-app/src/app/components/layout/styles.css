@@ -2,13 +2,43 @@
     border-radius: 0 10px 10px 0 / 0 225px 225px 0;
 }
 .itemStyle {
-    @apply text-gray-800 hover:bg-gray-400  focus:bg-gray-400 active:bg-gray-400 text-left w-64;
+    @apply text-gray-800 hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-400 text-left w-64;
 }
-
 .header {
     border-radius: 255px 0px 225px 2px/0px 225px 15px 225px;
 }
-
 .next-error-h1 {
     border-color: #1f2937 !important;
 }
+.custom-dropdown-margin {
+    margin-top: 3rem;
+}
+
+/* Dark mode styles */
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+body.dark {
+    background-color: #1a202c;
+    color: #cbd5e0;
+}
+.dark .bg-gray-50 {
+    background-color: #2d3748;
+}
+.dark .bg-gray-700 {
+    background-color: #2d3748;
+}
+.dark .hover\:bg-gray-100:hover {
+    background-color: #2d3748;
+}
+.dark .hover\:bg-gray-600:hover {
+    background-color: #4a5568;
+}
+.dark .text-gray-800 {
+    color: #cbd5e0;
+}
+.dark .text-gray-200 {
+    color: #e2e8f0;
+}
+

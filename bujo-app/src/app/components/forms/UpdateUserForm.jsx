@@ -53,14 +53,14 @@ export default function UpdateUserForm({
             <div className="flex flex-col items-center md:items-start">
                 <div className="mb-4 p-1 border-b ">
                     <label
-                        className="block text-gray-800 text-sm font-bold mb-2"
+                        className="block text-gray-800 dark:text-white ext-sm font-bold mb-2"
                         htmlFor="username"
                     >
                         Username
                     </label>
                     <input
                         {...register("username")}
-                        className="appearance-none border-none bg-transparent rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="appearance-none border-none bg-transparent rounded py-2 px-3 text-gray-800 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                         id="username"
                         type="text"
                         placeholder="Username"
@@ -69,14 +69,14 @@ export default function UpdateUserForm({
                 </div>
                 <div className="mb-4 p-1 border-b">
                     <label
-                        className="block text-gray-800 text-sm font-bold mb-2"
+                        className="block text-gray-800 dark:text-white text-sm font-bold mb-2"
                         htmlFor="email"
                     >
                         Email
                     </label>
                     <input
                         {...register("email")}
-                        className="appearance-none border-none bg-transparent rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="appearance-none border-none bg-transparent rounded py-2 px-3 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
                         id="email"
                         type="text"
                         placeholder="Email"
