@@ -107,7 +107,6 @@ export const checkIfEmailExists = async (userId, email) => {
             },
         },
     });
-    console.log;
 
     if (checkUser) {
         return { exists: true, message: "Email already exists" };
@@ -170,7 +169,6 @@ export const getJournalById = async (journalId) => {
                 },
             },
         });
-        console.log("getJournalByID ", journal);
         return journal;
     } catch (error) {
         console.error(error);
@@ -224,7 +222,6 @@ export const getNotesById = async (collectionId) => {
                 Notes_item: true,
             },
         });
-        console.log(notes);
         return notes;
     } catch (error) {
         console.error("Failed to get user notes:", error);
