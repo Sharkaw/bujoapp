@@ -63,8 +63,8 @@ const BookShelfPage = ({user, hasJournals}) => {
                                 key={index}
                             >
                                 <div className="flex flex-col">
-                                    {/* <Link href={`/journal/${journal.id}`}> */}
-                                    <Link href="/bookshelf/journal">
+                                    <Link href={`/journal/${journal.id}`}>
+                                    {/* <Link href="/bookshelf/journal"> */}
                                         <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40" />
                                         <p className="text-gray-800 font-semibold text-center text-xl w-max-32">
                                             {journal.title}
@@ -76,14 +76,6 @@ const BookShelfPage = ({user, hasJournals}) => {
                                     <RiDeleteBin6Line className="h-6 w-6 cursor-pointer" />
                                 </div>
                             </div>
-                            /* <Sidebar.Item
-                                href="#"
-                                icon={FiBookOpen}
-                                key={index}
-                                className="itemStyle"
-                            >
-                                {journal.title}
-                            </Sidebar.Item> */
                         ))
                     ) : (
                         <></>
