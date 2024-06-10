@@ -8,7 +8,7 @@ export default async function JournalPage ({params}) {
     const userJournal = await getJournalById(paramsJournalID);
     console.log("userJournal:", userJournal);
     // const userJournal = journalId;
-
+    // console.log("Notes_collection213 ", userJournal.Notes_collection);
     return (
         <>
             <div className="flex flex-col md:flex-row w-full max-w-[1000px] mb-10 mx-3 lg:mx-10">
