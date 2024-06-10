@@ -1,5 +1,5 @@
 import { getSession, getUserData } from "../actions";
-import JournalTitlePage from "./JournaTitlePage";
+import JournalTitlePage from "./JournalTitlePage";
 export default async function Journal() {
     try {
         const session = await getSession();
