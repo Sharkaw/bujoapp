@@ -126,7 +126,6 @@ export const checkIfEmailExists = async (userId, email) => {
             },
         },
     });
-    console.log;
 
     if (checkUser) {
         return { exists: true, message: "Email already exists" };
@@ -156,6 +155,40 @@ export const userHasJournals = async (userId) => {
         }
 
         return user.Bookshelf[0].journal;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+};
+
+export const getJournalById = async (journalId) => {
+    try {
+        const journal = await prisma.journal.findUnique({
+            where: { id: journalId },
+            include: {
+                Notes_collection: {
+                    include: {
+                        Notes_item: true,
+                    },
+                },
+                Sticky_notes_collection: {
+                    include: {
+                        Sticky_note_item: true,
+                    },
+                },
+                To_do_lists_collection: {
+                    include: {
+                        To_do_list_item: true,
+                    },
+                },
+                Calendar_collection: {
+                    include: {
+                        Calendar_item: true,
+                    },
+                },
+            },
+        });
+        return journal;
     } catch (error) {
         console.error(error);
         return null;
@@ -195,6 +228,22 @@ export const UpdateUserData = async (username, formData) => {
         return { success: true, error: "User data updated" };
     } catch (error) {
         console.error("Failed to update user data:", error);
+    } finally {
+        await prisma.$disconnect();
+    }
+};
+
+export const getNotesById = async (collectionId) => {
+    try {
+        const notes = await prisma.notes_collection.findUnique({
+            where: { id: collectionId },
+            include: {
+                Notes_item: true,
+            },
+        });
+        return notes;
+    } catch (error) {
+        console.error("Failed to get user notes:", error);
     } finally {
         await prisma.$disconnect();
     }
