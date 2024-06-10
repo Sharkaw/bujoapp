@@ -40,10 +40,16 @@ export default function SidebarMenu({ journals }) {
                             <Sidebar.Item href="/profile" className="itemStyle">
                                 Edit Profile
                             </Sidebar.Item>
-                            <Sidebar.Item href="#" className="itemStyle">
+                            <Sidebar.Item
+                                href="#"
+                                className="itemStyle disabled"
+                            >
                                 Friends
                             </Sidebar.Item>
-                            <Sidebar.Item href="#" className="itemStyle">
+                            <Sidebar.Item
+                                href="#"
+                                className="itemStyle disabled"
+                            >
                                 Share
                             </Sidebar.Item>
                         </Sidebar.Collapse>
@@ -55,7 +61,7 @@ export default function SidebarMenu({ journals }) {
                             <Sidebar.Item
                                 href="#"
                                 icon={FiEdit2}
-                                className="itemStyle"
+                                className="itemStyle disabled"
                             >
                                 Create journal
                             </Sidebar.Item>
@@ -63,7 +69,7 @@ export default function SidebarMenu({ journals }) {
                             {journals ? (
                                 journals.map((journal, index) => (
                                     <Sidebar.Item
-                                        href="#"
+                                        href={`/bookshelf/journal/${journal.id}`}
                                         icon={FiBookOpen}
                                         key={index}
                                         className="itemStyle"
