@@ -33,10 +33,10 @@ body {
 
 @layer base {
     h1 {
-        @apply font-kalam mb-5 p-2 text-gray-800;
+        @apply font-kalam mb-5 p-2 text-gray-800 dark:text-white;
     }
     p {
-        @apply font-inter text-gray-800;
+        @apply font-inter text-gray-800 dark:text-white;
     }
 }
 main {
