@@ -1,8 +1,11 @@
 import React from "react";
 
-const BookShelfSkeleton = () => {
+const BookShelfSkeleton = ({ darkMode }) => {
+    const skeletonBgColor = darkMode ? "bg-gray-800" : "bg-white-";
+    const skeletonTextColor = darkMode ? "text-gray-300" : "text-gray-800";
+
     return (
-        <div className="flex flex-col md:flex-row w-full max-w-[1000px] mb-10 mx-3">
+        <div className={`flex flex-col md:flex-row w-full max-w-[1000px] mb-10 mx-3 ${skeletonBgColor}`}>
             <div className="flex flex-col mt-5 w-full mx-auto">
                 <div className="flex flex-row justify-between">
                     <div className="h-12 bg-gray-300 w-1/3 mb-5"></div> 

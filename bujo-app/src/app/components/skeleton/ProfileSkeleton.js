@@ -1,10 +1,11 @@
 import React from "react";
 
-const ProfileSkeleton = () => {
+const ProfileSkeleton = ({ darkMode }) => {
+    const skeletonBgColor = darkMode ? "bg-gray-800" : "bg-white-";
+    const skeletonTextColor = darkMode ? "text-gray-300" : "text-gray-800";
+
     return (
-        <div
-            className="flex flex-col md:flex-row mb-10 w-full mt-8 m-1 p-1 animate-pulse"
-        >
+        <div className={`flex flex-col md:flex-row mb-10 w-full mt-8 m-1 p-1 animate-pulse ${skeletonBgColor} ${skeletonTextColor}`}>
             <div className="flex flex-col w-full md:w-1/2">
                 <div className="md:items-start justify-end md:justify-start mb-5 px-5">
                     <div className="h-8 bg-gray-300 rounded w-1/3 mb-4"></div>
