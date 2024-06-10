@@ -31,7 +31,7 @@ const ProfilePage = ({ user }) => {
 
     useEffect(() => {
         // Simulate a delay to show the skeleton
-        const timer = setTimeout(() => setLoading(false), 2000);
+        const timer = setTimeout(() => setLoading(false), 1000);
         return () => clearTimeout(timer);
     }, []);
 
