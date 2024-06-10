@@ -36,9 +36,7 @@ const BookShelfPage = ({ hasJournals }) => {
                         journal.map((journal, index) => (
                             <div className="flex m-3  w-40 md:w-48" key={index}>
                                 <div className="flex flex-col">
-                                    <Link
-                                        href={`/bookshelf/journal/${journal.id}`}
-                                    >
+                                    <Link href={`/journal/${journal.id}`}>
                                         <BsJournalBookmarkFill className="h-32 w-32 md:h-40 md:w-40" />
                                         <p className="text-gray-800 font-semibold text-center text-xl w-max-32">
                                             {journal.title}
