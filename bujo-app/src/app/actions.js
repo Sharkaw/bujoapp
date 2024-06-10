@@ -170,13 +170,12 @@ export const getJournalById = async (journalId) => {
                 },
             },
         });
-        console.log("getJournalByID ",journal);
+        console.log("getJournalByID ", journal);
         return journal;
     } catch (error) {
         console.error(error);
         return null;
     }
-
 };
 
 export const getUserData = async (id) => {
@@ -215,9 +214,4 @@ export const UpdateUserData = async (username, formData) => {
     } finally {
         await prisma.$disconnect();
     }
-};
-
-export const test = () => {
-    console.log("heip from action");
-    return {id:212};
 };
