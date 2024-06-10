@@ -215,3 +215,20 @@ export const UpdateUserData = async (username, formData) => {
         await prisma.$disconnect();
     }
 };
+
+export const getNotesById = async (collectionId) => {
+    try {
+        const notes = await prisma.notes_collection.findUnique({
+            where: { id: collectionId },
+            include: {
+                Notes_item: true,
+            },
+        });
+        console.log(notes);
+        return notes;
+    } catch (error) {
+        console.error("Failed to get user notes:", error);
+    } finally {
+        await prisma.$disconnect();
+    }
+};

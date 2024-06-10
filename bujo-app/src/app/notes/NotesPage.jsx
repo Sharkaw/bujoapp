@@ -1,12 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BaseButton } from "@/app/components/common/BaseButton";
 import "./notes.css";
 import EditableNote from "../components/forms/EditableNote";
+import { getNotesById } from "../actions";
 
-const NotesPage = () => {
+const NotesPage = ({ collectionId }) => {
     const [notes, setNotes] = useState([]);
+
+    useEffect(() => {
+        const fetchNotes = async () => {
+            const data = await getNotesById(collectionId);
+            if (data && data.Notes_item) {
+                setNotes(data.Notes_item);
+            }
+        };
+        fetchNotes();
+    }, [collectionId]);
 
     const handleCreateNew = () => {
         const newNote = {
