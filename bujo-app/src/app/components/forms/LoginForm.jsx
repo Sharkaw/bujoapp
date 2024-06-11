@@ -3,6 +3,7 @@ import { login } from "@/app/actions";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { LongButton } from "../common/LongButton";
+import Link from "next/link";
 
 export default function LoginForm() {
     const {
@@ -88,6 +89,7 @@ export default function LoginForm() {
                 >
                     Forgot Password?
                 </a>
+                <Link href="/bookshelf">(To the bookshelf)</Link>
             </div>
         </form>
     );
