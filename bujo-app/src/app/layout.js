@@ -1,6 +1,5 @@
 import React from "react";
 import "./globals.css";
-import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
 import Footer from "./components/layout/Footer";
 import { ThemeProvider } from "./lib/ThemeContext";

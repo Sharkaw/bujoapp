@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { getSession, getUserData } from "@/app/actions";
 import Image from "next/image";
 
@@ -11,7 +11,7 @@ export default function ProfileImage() {
             try {
                 const session = await getSession();
                 const user = await getUserData(session.user.id);
-                const picture = user.picture || defaultPicture;
+                const picture = user.picture;
                 setProfilePicture(picture);
             } catch (error) {
                 console.error("Could not get profile image", error);
